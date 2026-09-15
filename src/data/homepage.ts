@@ -6,7 +6,7 @@ export const homepageData = {
     secondaryCta: { text: '机场对比', href: '/compare/' }
   },
   stats: [
-    { label: '专业评测', value: '150+' },
+    { label: '测试与评测', value: '150+' },
     { label: '评测维度', value: '17项' },
     { label: '月度更新', value: '活跃' }
   ],
