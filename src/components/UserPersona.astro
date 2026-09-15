@@ -1,0 +1,52 @@
+---
+const personas = [
+  {
+    title: '视频用户',
+    icon: '🎬',
+    desc: 'Netflix / YouTube / Disney+',
+    href: '/brands/breezenet',
+  },
+  {
+    title: '游戏用户',
+    icon: '🎮',
+    desc: '低延迟 / 稳定连接',
+    href: '/brands/feimao',
+  },
+  {
+    title: '日常使用',
+    icon: '💻',
+    desc: '浏览 / 办公 / 社交',
+    href: '/brands/muguang',
+  },
+  {
+    title: '性价比用户',
+    icon: '💰',
+    desc: '低价格 / 大流量',
+    href: '/brands/breezenet',
+  }
+];
+---
+<section class="py-20 bg-slate-50 border-t border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4 tracking-tight">你是哪一种用户？</h2>
+      <p class="text-lg text-slate-600">根据您的真实使用场景，快速匹配最适合您的优质服务商，不再盲目挑选。</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {personas.map(p => (
+        <a href={p.href} class="group block bg-white rounded-3xl p-8 border border-slate-200/60 shadow-sm hover:shadow-xl hover:shadow-primary-500/10 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:bg-primary-50">
+            {p.icon}
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors">{p.title}</h3>
+          <p class="text-slate-500 font-medium mb-8">{p.desc}</p>
+          <div class="flex items-center text-primary-600 font-bold text-sm tracking-wide">
+            查看推荐
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
