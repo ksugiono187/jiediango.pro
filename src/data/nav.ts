@@ -7,7 +7,7 @@ export const headerNav = [
   { name: '机场FAQ', href: '/faq/' },
   { name: '跑路预警', href: '/warning/' },
   { name: '博客', href: '/articles/' },
-  { name: '机场优惠卷', href: '/coupons/' }
+  { name: '机场优惠券', href: '/coupons/' }
 ];
 
 export const footerNav = {
