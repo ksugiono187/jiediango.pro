@@ -1,0 +1,42 @@
+---
+import { redirects } from '../../data/redirects';
+import SeoHead from '../../components/SeoHead.astro';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return redirects.map(r => ({
+    params: { id: r.id },
+    props: { target: r.target }
+  }));
+}
+
+const { id } = Astro.params;
+const { target } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <SeoHead title={`正在前往... - ${site.name}`} noindex={true} />
+  <meta http-equiv="refresh" content={`2;url=${target}`} />
+  <script is:inline define:vars={{ target }}>
+    setTimeout(() => {
+      window.location.href = target;
+    }, 2000);
+  </script>
+</head>
+<body class="bg-slate-50 flex items-center justify-center min-h-screen font-sans text-slate-800">
+  <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-center max-w-md w-full mx-4">
+    <div class="w-16 h-16 bg-primary-50 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
+      <svg class="w-8 h-8 animate-spin" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+    </div>
+    <h1 class="text-xl font-bold mb-2">正在前往目标页面</h1>
+    <p class="text-slate-500 text-sm mb-6">为了确保安全，页面将在 2 秒后自动跳转。如果您不想等待，请点击下方按钮。</p>
+    <a href={target} rel="nofollow noopener" class="inline-block px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-500 transition-colors">
+      立即跳转
+    </a>
+  </div>
+</body>
+</html>

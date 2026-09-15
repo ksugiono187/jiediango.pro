@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import TopicCluster from '../../components/TopicCluster.astro';
+import { getCollection } from 'astro:content';
+
+const topics = await getCollection('topics');
+---
+<BaseLayout title="专题聚合">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <SectionTitle title="精选专题" description="系统化的知识整理，为您规划最佳阅读路径。" align="left" />
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+      {topics.map(topic => (
+        <TopicCluster 
+          title={topic.data.title}
+          description={topic.data.description}
+          count={0}
+          href={`/topics/${topic.id}`}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

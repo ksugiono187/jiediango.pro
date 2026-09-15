@@ -1,0 +1,107 @@
+---
+interface Props {
+  headers?: string[];
+  rows?: string[][];
+  brands?: { id: string; name: string }[];
+  dimensions?: string[];
+  data?: Record<string, string[]>;
+  initialSelection?: string[];
+}
+const { headers, rows, brands, dimensions, data, initialSelection } = Astro.props;
+const isDynamic = !!brands && !!data && !!dimensions && !!initialSelection;
+---
+<div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm my-8 relative">
+  <table class="w-full text-sm text-left comparison-table">
+    <thead class="bg-slate-50 text-slate-700 border-b border-slate-200">
+      <tr>
+        {isDynamic ? (
+          <>
+            <th scope="col" class="px-6 py-4 font-semibold w-1/4">维度</th>
+            {initialSelection.map((selectedId, colIndex) => (
+              <th scope="col" class="px-6 py-4 font-semibold w-1/4">
+                <select class="brand-select w-full bg-white border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2" data-col={colIndex}>
+                  {brands.map(b => (
+                    <option value={b.id} selected={b.id === selectedId}>{b.name}</option>
+                  ))}
+                </select>
+              </th>
+            ))}
+          </>
+        ) : (
+          headers?.map(header => (
+            <th scope="col" class="px-6 py-4 font-semibold">{header}</th>
+          ))
+        )}
+      </tr>
+    </thead>
+    <tbody>
+      {isDynamic ? (
+        dimensions.map((dim, i) => (
+          <tr class={`border-b border-slate-100 ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}`}>
+            <td class="px-6 py-4 font-medium text-slate-900">{dim}</td>
+            {initialSelection.map((selectedId, colIndex) => (
+              <td class={`px-6 py-4 text-slate-600 data-cell col-${colIndex}`} data-row={i}>
+                {data[selectedId]?.[i] || '-'}
+              </td>
+            ))}
+          </tr>
+        ))
+      ) : (
+        rows?.map((row, i) => (
+          <tr class={`border-b border-slate-100 ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}`}>
+            {row.map((cell, j) => (
+              <td class={`px-6 py-4 ${j === 0 ? 'font-medium text-slate-900' : 'text-slate-600'}`}>
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))
+      )}
+    </tbody>
+  </table>
+  
+  {isDynamic && (
+    <script is:inline define:vars={{ compareData: data }}>
+      document.addEventListener('DOMContentLoaded', () => {
+        const selects = document.querySelectorAll('.brand-select');
+        
+        function updateDisabledOptions() {
+          const selectedValues = Array.from(selects).map(s => s.value);
+          selects.forEach(select => {
+            Array.from(select.options).forEach(option => {
+              // Hide/Disable the option if it is selected in ANOTHER column
+              if (selectedValues.includes(option.value) && select.value !== option.value) {
+                option.disabled = true;
+                option.style.display = 'none';
+              } else {
+                option.disabled = false;
+                option.style.display = '';
+              }
+            });
+          });
+        }
+
+        // Initialize disabled states on load
+        updateDisabledOptions();
+
+        selects.forEach(select => {
+          select.addEventListener('change', (e) => {
+            const colIndex = e.target.getAttribute('data-col');
+            const selectedBrandId = e.target.value;
+            const brandData = compareData[selectedBrandId];
+            
+            if (brandData) {
+              const cells = document.querySelectorAll(`.data-cell.col-${colIndex}`);
+              cells.forEach((cell, rowIndex) => {
+                cell.textContent = brandData[rowIndex] || '-';
+              });
+            }
+            
+            // Update disabled options across all selects when a change occurs
+            updateDisabledOptions();
+          });
+        });
+      });
+    </script>
+  )}
+</div>

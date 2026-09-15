@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { couponData } from '../data/coupons';
+
+const allBrands = await getCollection('brands');
+const sortOrder = [
+  'breezenet', 'feimao', 'muguang', 'wuyou', 'lingmao', 
+  'shanyue', 'feiwei', 'kuajie', 'xingdaomeng', 'guangsu', 
+  'weitu', 'u1s1', 'jilian', 'quanqiu', 'guangnian', 
+  'sogo', 'yuzhou', 'ermao', 'yifan', 'bianyuan', 
+  'kexin', 'sujie', 'kuaili', 'feiv', 'tizi', 
+  'langwang', 'lingdong', 'yinxingren'
+];
+const brands = allBrands.sort((a, b) => {
+  const indexA = sortOrder.indexOf(a.id);
+  const indexB = sortOrder.indexOf(b.id);
+  if (indexA === -1) return 1;
+  if (indexB === -1) return -1;
+  return indexA - indexB;
+});
+---
+<BaseLayout title="机场优惠卷 - 限时折扣与特价活动">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-extrabold text-slate-900 mb-4">机场优惠卷专区</h1>
+      <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+        各大服务商的最新限时折扣与优惠代码
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6">
+      {brands.filter(brand => couponData[brand.id]).map(brand => {
+        const coupon = couponData[brand.id];
+        return (
+          <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow">
+            <h3 class="text-xl font-bold text-slate-900 mb-3">{brand.data.name}</h3>
+            <button 
+              class="copy-btn relative text-sm text-primary-600 bg-primary-50 border border-primary-100 px-4 py-2 rounded-full font-medium hover:bg-primary-100 hover:text-primary-700 transition-all active:scale-95 cursor-pointer"
+              data-code={coupon.code}
+            >
+              <span class="btn-text">{coupon.label}：{coupon.code}</span>
+            </button>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyBtns = document.querySelectorAll('.copy-btn');
+      copyBtns.forEach(btn => {
+        btn.addEventListener('click', async function() {
+          const code = this.getAttribute('data-code');
+          const textSpan = this.querySelector('.btn-text');
+          
+          if (code && textSpan) {
+            const originalText = textSpan.textContent;
+            try {
+              if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(code);
+              } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = code;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                textArea.style.top = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand('copy');
+                textArea.remove();
+              }
+              textSpan.textContent = '✅ 复制成功';
+              
+              setTimeout(() => {
+                textSpan.textContent = originalText;
+              }, 2000);
+            } catch (err) {
+              console.error('Failed to copy: ', err);
+              textSpan.textContent = '❌ 复制失败';
+              setTimeout(() => {
+                textSpan.textContent = originalText;
+              }, 2000);
+            }
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

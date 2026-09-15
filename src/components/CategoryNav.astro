@@ -1,0 +1,17 @@
+---
+import { categories } from '../data/categories';
+interface Props {
+  currentCategory?: string;
+}
+const { currentCategory } = Astro.props;
+---
+<nav class="flex flex-wrap gap-2 mb-8">
+  <a href="/blog/" class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${!currentCategory ? 'bg-primary-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
+    全部
+  </a>
+  {categories.map(cat => (
+    <a href={`/category/${cat.id}`} class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${currentCategory === cat.id ? 'bg-primary-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
+      {cat.icon} {cat.name}
+    </a>
+  ))}
+</nav>

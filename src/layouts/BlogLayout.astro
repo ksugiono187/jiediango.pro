@@ -1,0 +1,86 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  category: string;
+  author?: string;
+  headings?: { depth: number; slug: string; text: string }[];
+}
+
+const { title, description, pubDate, updatedDate, category, author, headings = [] } = Astro.props;
+
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '机场测评', href: '/blog/' },
+  { name: title, href: '#' }
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+      
+      <!-- Article Content -->
+      <article class="lg:col-span-3 w-full px-6 sm:px-10 lg:px-12 py-12 bg-white/60 backdrop-blur-xl border border-white/60 shadow-xl shadow-primary-900/5 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary-900/10 hover:bg-white/70">
+        <Breadcrumb items={breadcrumbs} />
+        
+        <header class="mt-8 mb-12">
+          <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{title}</h1>
+          <div class="flex flex-wrap items-center text-sm text-slate-500 gap-4">
+            {author && <span>作者：{author}</span>}
+            <span>分类：<a href={`/category/${category}`} class="text-primary-600 hover:underline">{category}</a></span>
+            <time datetime={pubDate.toISOString()}>
+              发布于：{pubDate.toLocaleDateString('zh-CN')}
+            </time>
+          </div>
+        </header>
+
+        <div class="prose-custom max-w-none">
+          <slot />
+        </div>
+      </article>
+
+      <!-- TOC Sidebar -->
+      <aside class="hidden lg:block lg:col-span-1 sticky top-24">
+        <div class="bg-white/80 backdrop-blur-xl border border-white shadow-xl shadow-primary-900/5 rounded-3xl p-6">
+          <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+            文章目录
+          </h3>
+          <nav class="space-y-3 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-2">
+            <a href="#为什么要写这篇博客" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">为什么要写这篇博客？</a>
+            <a href="#2026-年-机场-推荐先看结论" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">2026 年 机场 推荐：先看结论</a>
+            <a href="#2026-年-28-款-机场-推荐与对比" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">2026 年 28 款 机场 推荐与对比</a>
+            <a href="#28-款-机场-综合对比表" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">28 款 机场 综合对比表</a>
+            <a href="#机场-速度测试下载速度上传速度和-ping-哪个更重要" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">机场 速度测试：下载速度、上传速度和 Ping 哪个更重要？</a>
+            <a href="#2026-机场-节点测速对比" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">2026 机场 节点测速对比</a>
+            <a href="#机场-稳定性重要吗" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">机场 稳定性重要吗？</a>
+            <a href="#机场-服务器应该怎么选" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">机场 服务器应该怎么选？</a>
+            <a href="#机场-隐私和安全性" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">机场 隐私和安全性</a>
+            <a href="#什么是-nologs-policy" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">什么是 No-Logs Policy？</a>
+            <a href="#机场-支持哪些设备" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">机场 支持哪些设备？</a>
+            <a href="#机场-协议怎么选" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">机场 协议怎么选？</a>
+            <a href="#netflixyoutube-和流媒体-机场-怎么选" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">Netflix、YouTube 和流媒体 机场 怎么选？</a>
+            <a href="#游戏-机场-怎么选" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">游戏 机场 怎么选？</a>
+            <a href="#机场-价格怎么比较" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">机场 价格怎么比较？</a>
+            <a href="#免费-机场-和付费-机场-有什么区别" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">免费 机场 和付费 机场 有什么区别？</a>
+            <a href="#购买-机场-前的-10-项检查清单" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">购买 机场 前的 10 项检查清单</a>
+            <a href="#28-款-机场-应该怎么选" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">28 款 机场 应该怎么选？</a>
+            <a href="#2026-机场-综合评分应该怎么算" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">2026 机场 综合评分应该怎么算？</a>
+            <a href="#2026-机场-测试标准" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">2026 机场 测试标准</a>
+            <a href="#机场-越贵越好吗" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">机场 越贵越好吗？</a>
+            <a href="#选择-机场-最容易犯的-5-个错误" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">选择 机场 最容易犯的 5 个错误</a>
+            <a href="#常见问题-faq" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">常见问题 FAQ</a>
+            <a href="#总结2026-年-机场-到底怎么选" class="block text-sm transition-colors hover:text-primary-600 leading-relaxed text-slate-800 font-medium border-b border-slate-100 pb-2 last:border-0">总结：2026 年 机场 到底怎么选？</a>
+          </nav>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</BaseLayout>

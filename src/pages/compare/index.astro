@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import BrandGrid from '../../components/BrandGrid.astro';
+import { getCollection } from 'astro:content';
+import { compareData, compareDimensions } from '../../data/compareData';
+
+const allBrands = await getCollection('brands');
+const sortOrder = [
+  'wuyou', 'shanyue', 'feimao', 'feiwei', 'quanqiu', 
+  'ermao', 'breezenet', 'guangsu', 'weitu', 'yifan', 
+  'xingdaomeng', 'yuzhou', 'u1s1', 'muguang', 'lingmao', 
+  'kuajie', 'jilian', 'guangnian', 'sogo', 'bianyuan', 
+  'kexin', 'sujie', 'kuaili', 'feiv', 'tizi', 
+  'langwang', 'lingdong', 'yinxingren'
+];
+
+const brands = allBrands.sort((a, b) => {
+  const indexA = sortOrder.indexOf(a.id);
+  const indexB = sortOrder.indexOf(b.id);
+  if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+  if (indexA !== -1) return -1;
+  if (indexB !== -1) return 1;
+  return a.data.name.localeCompare(b.data.name);
+});
+
+const brandList = brands.map(b => ({ id: b.id, name: b.data.name }));
+const initialSelection = ['breezenet', 'feimao', 'muguang'];
+---
+<BaseLayout title="产品与服务对比">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <SectionTitle title="2026推荐机场 多维深度对比" description="从不同维度对比市面上主流的产品，为您提供直观的选择建议。" />
+    
+    <div class="mt-12">
+      <h3 class="text-xl font-bold text-slate-900 mb-6">服务商综合对比</h3>
+      <ComparisonTable 
+        brands={brandList}
+        dimensions={compareDimensions}
+        data={compareData}
+        initialSelection={initialSelection}
+      />
+    </div>
+    
+    <div class="mt-16 max-w-3xl mx-auto bg-slate-50 rounded-xl p-8 border border-slate-100">
+      <h3 class="text-lg font-bold text-slate-900 mb-4">💡 我们的选择建议</h3>
+      <p class="text-slate-600 mb-4">在选择服务时，请务必根据您的实际需求和预算做出决定。没有绝对完美的产品，只有最适合您的方案。</p>
+      <ul class="list-disc pl-5 text-slate-600 space-y-2">
+        <li>如果预算有限且需求简单，推荐 <strong>飞猫</strong>。</li>
+        <li>如果对稳定性有极高要求，推荐 <strong>微风</strong>。</li>
+      </ul>
+    </div>
+
+    <BrandGrid />
+  </div>
+</BaseLayout>

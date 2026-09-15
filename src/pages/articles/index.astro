@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+
+const articles = await getCollection('articles');
+articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<BaseLayout title="博客与资讯">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <SectionTitle title="博客与行业资讯" description="在这里，我们将持续为您更新最新的科学上网技术、行业动态以及各类实用教程。" />
+    <!-- Category Filter Buttons -->
+    <div class="mt-8 mb-12 flex flex-wrap gap-3 justify-center items-center category-filters">
+      <button class="filter-btn active px-6 py-2 rounded-full bg-primary-600 text-white font-medium shadow-sm transition-all hover:bg-primary-700" data-category="all">全部文章</button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-medium hover:bg-slate-50 hover:text-primary-600 transition-all shadow-sm" data-category="机场选择指南">机场选择指南</button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-medium hover:bg-slate-50 hover:text-primary-600 transition-all shadow-sm" data-category="clash 教程">clash 教程</button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-medium hover:bg-slate-50 hover:text-primary-600 transition-all shadow-sm" data-category="流媒体">流媒体</button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-medium hover:bg-slate-50 hover:text-primary-600 transition-all shadow-sm" data-category="网络技术">网络技术</button>
+    </div>
+    
+    <div class="mt-4 grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="articles-grid">
+      {articles.map(post => (
+        <a href={`/articles/${post.id}/`} data-category={post.data.category || '未分类'} class="article-card group bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+          <div class="p-6">
+            <div class="flex items-center text-sm text-slate-500 mb-4 justify-between">
+              <div class="flex items-center">
+                <span class="font-medium text-primary-600">{post.data.author}</span>
+                <span class="mx-2">•</span>
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString('zh-CN', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+              </div>
+              <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md text-xs font-medium">{post.data.category || '未分类'}</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2">
+              {post.data.title}
+            </h3>
+            <p class="text-slate-600 line-clamp-3 mb-6">
+              {post.data.description}
+            </p>
+            <span class="text-primary-600 font-medium group-hover:text-primary-700 flex items-center">
+              阅读全文 
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.article-card');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Update active button state
+          buttons.forEach(btn => {
+            btn.classList.remove('bg-primary-600', 'text-white');
+            btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+          });
+          button.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+          button.classList.add('bg-primary-600', 'text-white');
+
+          const targetCategory = button.getAttribute('data-category');
+
+          // Filter articles
+          cards.forEach(card => {
+            if (targetCategory === 'all' || card.getAttribute('data-category') === targetCategory) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</BaseLayout>

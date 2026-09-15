@@ -1,0 +1,50 @@
+---
+import { footerNav } from '../data/nav';
+import { site } from '../data/site';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-slate-900 border-t border-slate-800 mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="col-span-1 md:col-span-2">
+        <span class="text-xl font-bold text-white">{site.name}</span>
+        <p class="mt-4 text-slate-400 text-sm max-w-xs">{site.description}</p>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold text-white tracking-wider uppercase">内容</h3>
+        <ul class="mt-4 space-y-3">
+          {footerNav.categories.map(category => (
+            <li>
+              <a href={category.href} class="text-sm text-slate-400 hover:text-white transition-colors">
+                {category.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold text-white tracking-wider uppercase">关于我们与政策</h3>
+        <ul class="mt-4 grid grid-cols-2 gap-y-3 gap-x-4">
+          {footerNav.pages.map(page => (
+            <li>
+              <a href={page.href} class="text-sm text-slate-400 hover:text-white transition-colors">
+                {page.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm text-slate-400">
+        &copy; {currentYear} {site.name}. All rights reserved.
+      </p>
+      <div class="text-sm text-slate-500 mt-4 md:mt-0 md:text-right relative z-10">
+        <p>本站所有评测数据与结论仅代表个人独立观点，不构成绝对购买建议。</p>
+      </div>
+    </div>
+  </div>
+</footer>

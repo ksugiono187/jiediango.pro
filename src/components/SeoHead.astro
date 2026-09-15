@@ -1,0 +1,42 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const { 
+  title = site.name, 
+  description = site.description, 
+  canonical = Astro.url.href,
+  ogType = 'website',
+  ogImage = new URL('/default-og.png', Astro.site || site.domain).href,
+  noindex = false
+} = Astro.props;
+
+const pageTitle = title === site.name ? title : `${title} - ${site.name}`;
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{pageTitle}</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="description" content={description} />
+  
+  <link rel="canonical" href={canonical} />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+</head>

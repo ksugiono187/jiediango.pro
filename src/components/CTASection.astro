@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  ctaText?: string;
+}
+const { title, description, href, ctaText = "查看详情" } = Astro.props;
+---
+<section class="bg-primary-900 py-16 text-center rounded-2xl mx-4 sm:mx-6 lg:mx-8 my-16 shadow-lg">
+  <h2 class="text-3xl font-bold text-white mb-4">{title}</h2>
+  <p class="text-primary-100 text-lg max-w-2xl mx-auto mb-8">{description}</p>
+  <a href={href} class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-primary-900 bg-white hover:bg-slate-50 rounded-lg transition-colors">
+    {ctaText}
+  </a>
+</section>

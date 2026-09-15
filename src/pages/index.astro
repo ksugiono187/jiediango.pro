@@ -1,0 +1,127 @@
+---
+import LandingLayout from '../layouts/LandingLayout.astro';
+import Hero from '../components/Hero.astro';
+import StatsStrip from '../components/StatsStrip.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import TopicCluster from '../components/TopicCluster.astro';
+import BrandCard from '../components/BrandCard.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import FAQ from '../components/FAQ.astro';
+import CTASection from '../components/CTASection.astro';
+import NewsletterBox from '../components/NewsletterBox.astro';
+
+import { homepageData } from '../data/homepage';
+import { getCollection } from 'astro:content';
+import { homeCompareData, homeCompareDimensions } from '../data/homeCompareData';
+
+const posts = await getCollection('blog');
+const recentPosts = posts.slice(0, 3);
+const allBrands = await getCollection('brands');
+const sortOrder = [
+  'breezenet', 'feimao', 'muguang', 'wuyou', 'lingmao', 
+  'shanyue', 'feiwei', 'kuajie', 'xingdaomeng', 'guangsu', 
+  'weitu', 'u1s1', 'jilian', 'quanqiu', 'guangnian', 
+  'sogo', 'yuzhou', 'ermao', 'yifan', 'bianyuan', 
+  'kexin', 'sujie', 'kuaili', 'feiv', 'tizi', 
+  'langwang', 'lingdong', 'yinxingren'
+];
+const brands = allBrands.sort((a, b) => {
+  const indexA = sortOrder.indexOf(a.id);
+  const indexB = sortOrder.indexOf(b.id);
+  
+  if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+  if (indexA !== -1) return -1;
+  if (indexB !== -1) return 1;
+  return 0;
+});
+const topics = await getCollection('topics');
+
+const brandList = brands.map(b => ({ id: b.id, name: b.data.name }));
+const initialSelection = ['breezenet', 'feimao', 'muguang'];
+---
+<LandingLayout>
+  <Hero {...homepageData.hero} />
+  <StatsStrip stats={homepageData.stats} />
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionTitle title="为什么选择我们？" description="全方位的内容生态，为您解决数字生活中的各种痛点。" />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {homepageData.features.map(f => <FeatureCard {...f} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionTitle title="机场推荐 优选品牌库" description="经过深度体验与长期测试，为您推荐最靠谱的服务商。" />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {brands.map(brand => (
+          <BrandCard 
+            name={brand.data.name}
+            description={brand.data.description}
+            href={`/brands/${brand.id}`}
+            tags={brand.data.tags}
+            rating={brand.data.rating}
+            price={brand.data.price}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionTitle title="如何选择适合你的产品？" description="多维度的对比参考，帮您避免踩坑。" />
+      <ComparisonTable 
+        brands={brandList}
+        dimensions={homeCompareDimensions}
+        data={homeCompareData}
+        initialSelection={initialSelection}
+      />
+      
+      <div class="mt-16 max-w-4xl mx-auto prose prose-slate prose-lg lg:prose-xl">
+        <h3 class="text-2xl font-bold text-slate-900 mb-6 text-center">🏆 2026 年度编辑精选推荐指南</h3>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          面对市面上琳琅满目的服务商，到底该如何选择？经过我们长达数月的深度多维度测试，结合价格、速度、稳定性和解锁能力，我们为您总结了以下三款最值得入手的“闭眼买”系列产品：
+        </p>
+        
+        <div class="bg-blue-50 rounded-2xl p-6 mb-6 border border-blue-100">
+          <h4 class="text-xl font-bold text-blue-900 mb-2 flex items-center gap-2">
+            🥇 绝对首推：<a href="/brands/breezenet" class="text-blue-700 hover:text-blue-900 hover:underline transition-colors decoration-2 underline-offset-4">微风网络 (Breezenet)</a>
+          </h4>
+          <p class="text-slate-700 m-0">
+            <strong>推荐理由：极致性价比与大流量的完美结合。</strong>作为今年的黑马，微风网络在价格（低至 8 元/月）和性能之间找到了完美的平衡点。它不仅提供海量原生 IP 带来的完美流媒体解锁体验，更罕见地做到<strong>“基本不限制设备连接数”</strong>。无论您是学生党、重度视频消费者，还是需要多设备同时在线的大家庭，微风网络都能以最低的成本提供最优质的翻墙体验，是我们当之无愧的性价比之王。
+          </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-6 mb-6 border border-slate-200">
+          <h4 class="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
+            🥈 其次推荐：<a href="/brands/feimao" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors decoration-2 underline-offset-4">飞猫云 (Feimao)</a>
+          </h4>
+          <p class="text-slate-700 m-0">
+            <strong>推荐理由：专为高端外贸与电竞玩家打造的顶级专线。</strong>如果您对网络的容错率为零，不能接受哪怕一秒钟的卡顿，那么飞猫云是您的最佳选择。它采用了极其昂贵的 <strong>2.5Gbps IPLC/IEPL 物理内网专线</strong>。这意味着即便在最拥堵的晚高峰，它的延迟依然能保持在极低水平，且完全无视公网丢包。虽然设备数有限制，但对于外贸商务、高阶游戏玩家和企业用户来说，它的极致稳定性完全值回票价。
+          </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+          <h4 class="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
+            🥉 优质备选：<a href="/brands/muguang" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors decoration-2 underline-offset-4">暮光网络 (Muguang)</a>
+          </h4>
+          <p class="text-slate-700 m-0">
+            <strong>推荐理由：简单纯粹，良心直连。</strong>暮光主打精选核心节点与稳定的日常使用体验，非常适合轻度冲浪、查阅资料以及刚接触翻墙的入门级用户。它没有过于花哨的功能，但在核心的高峰期依然能保持良好的速度体验。亲民的价格加上全天候的在线客服，让它成为备用节点或入门的首选。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="py-20 bg-slate-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionTitle title="常见问题解答 (FAQ)" />
+      <FAQ faqs={homepageData.faqs} />
+    </div>
+  </section>
+</LandingLayout>

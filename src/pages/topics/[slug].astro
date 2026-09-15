@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+
+export async function getStaticPaths() {
+  const topics = await getCollection('topics');
+  return topics.map(topic => ({
+    params: { slug: topic.id },
+    props: { topic },
+  }));
+}
+
+const { topic } = Astro.props;
+const { Content } = await render(topic);
+---
+<BaseLayout title={topic.data.title} description={topic.data.description}>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <SectionTitle title={topic.data.title} description={topic.data.description} />
+    
+    <div class="prose-custom max-w-none mt-12 bg-white p-8 rounded-xl border border-slate-100 shadow-sm">
+      <Content />
+      
+      <div class="mt-10 pt-10 border-t border-slate-100 text-center text-slate-500">
+        该专题的相关文章列表将在这里展示...
+      </div>
+    </div>
+  </div>
+</BaseLayout>

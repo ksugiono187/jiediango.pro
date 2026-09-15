@@ -1,0 +1,56 @@
+---
+// src/components/Comments.astro
+---
+
+<div class="mt-16 pt-10 border-t border-slate-200/60">
+  <h3 class="text-2xl font-bold text-slate-900 mb-8">评论交流</h3>
+
+  <!-- 评论输入框 -->
+  <form class="mb-12 bg-white/50 backdrop-blur-xl border border-white/80 p-6 rounded-3xl shadow-sm transition-all hover:shadow-md focus-within:bg-white/70">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+      <div>
+        <label for="name" class="block text-sm font-medium text-slate-700 mb-2">您的称呼</label>
+        <input type="text" id="name" placeholder="昵称" class="w-full px-4 py-3 rounded-2xl border border-slate-200/80 bg-white/80 focus:ring-4 focus:ring-primary-500/10 focus:border-primary-400 outline-none transition-all placeholder-slate-400" />
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium text-slate-700 mb-2">联系邮箱 <span class="text-xs font-normal text-slate-400">（不会公开显示）</span></label>
+        <input type="email" id="email" placeholder="example@email.com" class="w-full px-4 py-3 rounded-2xl border border-slate-200/80 bg-white/80 focus:ring-4 focus:ring-primary-500/10 focus:border-primary-400 outline-none transition-all placeholder-slate-400" />
+      </div>
+    </div>
+    <div class="mb-5">
+      <label for="comment" class="block text-sm font-medium text-slate-700 mb-2">评论内容</label>
+      <textarea id="comment" rows="4" placeholder="在此写下您的疑问或使用感受..." class="w-full px-4 py-4 rounded-2xl border border-slate-200/80 bg-white/80 focus:ring-4 focus:ring-primary-500/10 focus:border-primary-400 outline-none transition-all resize-y placeholder-slate-400"></textarea>
+    </div>
+    <div class="flex justify-end">
+      <button type="button" class="px-8 py-3 bg-slate-900 hover:bg-primary-600 text-white font-medium rounded-2xl shadow-lg shadow-slate-900/20 hover:shadow-primary-600/30 transition-all duration-300 hover:-translate-y-1">
+        提交评论
+      </button>
+    </div>
+  </form>
+
+  <!-- 模拟评论列表 -->
+  <div class="space-y-8">
+    <h4 class="font-medium text-slate-500 mb-6 flex items-center gap-2 flex-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      <span>最新留言 (1)</span>
+      <span class="text-sm text-slate-500 font-normal ml-2 pl-3 border-l border-slate-300 hidden sm:inline-block">欢迎理性交流，请勿发表任何违反法规的言论，共建互帮互助的网络环境。</span>
+    </h4>
+    
+    <!-- 官方声明留言 -->
+    <div class="flex space-x-4 animate-fade-in mt-6">
+      <div class="flex-shrink-0">
+        <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center text-white font-bold text-sm shadow-sm">作</div>
+      </div>
+      <div class="flex-1 bg-primary-50/70 backdrop-blur-md border border-primary-100/50 p-5 rounded-3xl rounded-tl-sm shadow-sm hover:shadow-md transition-shadow">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <h4 class="font-bold text-primary-900">节点团队</h4>
+            <span class="px-2 py-0.5 rounded-full bg-primary-100 text-primary-700 text-[10px] font-bold tracking-wider">作者</span>
+          </div>
+          <span class="text-xs text-slate-400 font-medium tracking-wide">置顶留言</span>
+        </div>
+        <p class="text-slate-700 text-sm leading-relaxed">如有任何业务或商业洽谈 请联系我们客服专线tlg 我们的客服会以尽可能的速度回复你的请求</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,235 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+export async function getStaticPaths() {
+  const brands = await getCollection('brands');
+  const sortOrder = [
+    'breezenet', 'feimao', 'muguang', 'wuyou', 'lingmao', 
+    'shanyue', 'feiwei', 'kuajie', 'xingdaomeng', 'guangsu', 
+    'weitu', 'u1s1', 'jilian', 'quanqiu', 'guangnian', 
+    'sogo', 'yuzhou', 'ermao', 'yifan', 'bianyuan', 
+    'kexin', 'sujie', 'kuaili', 'feiv', 'tizi', 
+    'langwang', 'lingdong', 'yinxingren'
+  ];
+  
+  const sortedBrands = [...brands].sort((a, b) => {
+    let indexA = sortOrder.indexOf(a.id);
+    let indexB = sortOrder.indexOf(b.id);
+    if (indexA === -1) indexA = 999;
+    if (indexB === -1) indexB = 999;
+    return indexA - indexB;
+  });
+
+  return sortedBrands.map((brand, index) => ({
+    params: { slug: brand.id },
+    props: { 
+      brand,
+      prevBrand: index > 0 ? sortedBrands[index - 1] : null,
+      nextBrand: index + 1 < sortedBrands.length ? sortedBrands[index + 1] : null
+    },
+  }));
+}
+
+import { couponData } from '../../data/coupons';
+
+const { brand, prevBrand, nextBrand } = Astro.props;
+const { Content } = await render(brand);
+
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '品牌库', href: '/brands/' },
+  { name: brand.data.name, href: '#' }
+];
+
+function getStars(id: string, index: number) {
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    hash = (hash << 5) - hash + id.charCodeAt(i);
+    hash |= 0;
+  }
+  hash = Math.abs(hash);
+  
+  // Use category index to vary within the brand
+  const seed = (hash * (index + 7)) % 100;
+  
+  // Distribution: ~15% for 3 stars, ~45% for 4 stars, ~40% for 5 stars
+  let rating = 4;
+  if (seed < 15) rating = 3;
+  else if (seed < 60) rating = 4;
+  else rating = 5;
+  
+  return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+}
+
+const subRatings = [
+  { name: '下载', stars: getStars(brand.id, 1) },
+  { name: '上传', stars: getStars(brand.id, 2) },
+  { name: '延迟', stars: getStars(brand.id, 3) },
+  { name: '稳定性', stars: getStars(brand.id, 4) },
+  { name: '流媒体', stars: getStars(brand.id, 5) },
+];
+---
+<BaseLayout title={brand.data.name} description={brand.data.description}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <Breadcrumb items={breadcrumbs} />
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+      {/* Left Main Content */}
+      <div class="lg:col-span-2 flex flex-col gap-6">
+        
+        <div class="flex justify-between items-center border-y border-slate-200/60 py-3 px-5 bg-white/40 backdrop-blur-sm rounded-2xl shadow-sm">
+          {prevBrand ? (
+            <a href={`/brands/${prevBrand.id}/`} class="text-sm font-medium text-slate-600 hover:text-primary-600 flex items-center gap-1.5 transition-colors group">
+              <svg class="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+              上一品牌
+            </a>
+          ) : <div class="w-20"></div>}
+          
+          <a href="/brands/" class="text-xs font-bold text-slate-400 hover:text-primary-600 tracking-wider">品牌库</a>
+          
+          {nextBrand ? (
+            <a href={`/brands/${nextBrand.id}/`} class="text-sm font-medium text-slate-600 hover:text-primary-600 flex items-center gap-1.5 transition-colors group">
+              下一品牌
+              <svg class="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+          ) : <div class="w-20"></div>}
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="bg-slate-50 p-8 border-b border-slate-200">
+            <h1 class="text-3xl font-bold text-slate-900 mb-4">{brand.data.name}</h1>
+            <p class="text-lg text-slate-600">{brand.data.description}</p>
+            {brand.data.tags && (
+              <div class="flex flex-wrap gap-2 mt-6">
+                {brand.data.tags.map(tag => (
+                  <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-sm rounded-full">{tag}</span>
+                ))}
+              </div>
+            )}
+          </div>
+          
+          <div class="p-8 prose-custom max-w-none">
+            <Content />
+            <div class="mt-8">
+              <a href={brand.data.url || "#"} class="btn-primary" rel="nofollow noopener" target="_blank">前往官网了解更多</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center border-y border-slate-200/60 py-3 px-5 bg-white/40 backdrop-blur-sm rounded-2xl shadow-sm">
+          {prevBrand ? (
+            <a href={`/brands/${prevBrand.id}/`} class="text-sm font-medium text-slate-600 hover:text-primary-600 flex items-center gap-1.5 transition-colors group">
+              <svg class="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+              上一品牌
+            </a>
+          ) : <div class="w-20"></div>}
+          
+          <a href="/brands/" class="text-xs font-bold text-slate-400 hover:text-primary-600 tracking-wider">品牌库</a>
+          
+          {nextBrand ? (
+            <a href={`/brands/${nextBrand.id}/`} class="text-sm font-medium text-slate-600 hover:text-primary-600 flex items-center gap-1.5 transition-colors group">
+              下一品牌
+              <svg class="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+          ) : <div class="w-20"></div>}
+        </div>
+
+      </div>
+
+      {/* Right Sticky Sidebar */}
+      <div class="lg:col-span-1">
+        <div class="sticky top-24 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 lg:p-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-100 pb-4">{brand.data.name}</h3>
+          
+          <div class="space-y-5 mb-8">
+            <div class="pb-4 border-b border-slate-50 space-y-2.5">
+              {subRatings.map(rating => (
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-500 font-medium text-sm">{rating.name}</span>
+                  <span class="text-amber-400 tracking-wider text-sm">{rating.stars}</span>
+                </div>
+              ))}
+            </div>
+            
+            {couponData[brand.id] && (
+              <div class="flex justify-between items-center pb-4 border-b border-slate-50">
+                <span class="text-slate-500 font-medium">专属优惠</span>
+                <button 
+                  class="copy-btn relative text-sm text-primary-600 bg-primary-50 border border-primary-100 px-3 py-1 rounded-full font-medium hover:bg-primary-100 hover:text-primary-700 transition-all active:scale-95 cursor-pointer"
+                  data-code={couponData[brand.id].code}
+                >
+                  <span class="btn-text">{couponData[brand.id].label}：{couponData[brand.id].code}</span>
+                </button>
+              </div>
+            )}
+            
+            <div class="flex justify-between items-center pb-4 border-b border-slate-50">
+              <span class="text-slate-500 font-medium">起步价格</span>
+              <span class="text-lg font-bold text-slate-900">{brand.data.price || '¥ 15.00 / 月'}</span>
+            </div>
+            
+            <div>
+              <span class="block text-slate-500 font-medium mb-3">编辑推荐理由</span>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                <p class="text-sm text-slate-700 leading-relaxed m-0">
+                  {brand.data.recommendReason || `作为行业领先的服务商，${brand.data.name} 提供了极致稳定的流媒体解锁体验与极高性价比的专线带宽，是我们重点评测并推荐的选择。`}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <a href={brand.data.url || "#"} class="btn-primary w-full flex items-center justify-center gap-2 py-3.5 text-base" rel="nofollow noopener" target="_blank">
+            <span>前往官网了解更多</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyBtns = document.querySelectorAll('.copy-btn');
+      copyBtns.forEach(btn => {
+        btn.addEventListener('click', async function(e) {
+          e.preventDefault();
+          const code = this.getAttribute('data-code');
+          const textSpan = this.querySelector('.btn-text');
+          
+          if (code && textSpan) {
+            const originalText = textSpan.textContent;
+            try {
+              if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(code);
+              } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = code;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                textArea.style.top = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand('copy');
+                textArea.remove();
+              }
+              textSpan.textContent = '✅ 复制成功';
+              
+              setTimeout(() => {
+                textSpan.textContent = originalText;
+              }, 2000);
+            } catch (err) {
+              console.error('Failed to copy: ', err);
+              textSpan.textContent = '❌ 复制失败';
+              setTimeout(() => {
+                textSpan.textContent = originalText;
+              }, 2000);
+            }
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

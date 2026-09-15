@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+const warningList = [
+  { name: '速蛙云 (SuwaCloud)', date: '2022-07', reason: '机场圈影响极大的“跑路事件”。拥有大量用户，突然官网断开连线，电报群解散，老板卷走大量年付及高额预存款失踪。' },
+  { name: 'RixCloud', date: '2020-09', reason: '曾经的高端机场代表（人称“贵族机场”），毫无征兆地全线宕机并注销所有运营账号，给众多高净值用户造成巨大损失。' },
+  { name: '蓝岸 (Blinkload)', date: '2021-06', reason: '曾是颇具规模的 IEPL 专线机场，官网突然报 502 错误，随后老板清空 Telegram 频道和群组，直接失联。' },
+  { name: '布丁 (Pudding)', date: '2021-08', reason: '长期遭受 DDoS 攻击，经历了多次长时间断线后，运营方宣布放弃维护并直接跑路，未提供任何退款方案。' },
+  { name: '猫熊网络', date: '2021-05', reason: '在推出极具诱惑力的“特价年付/买一送一”活动，疯狂吸纳资金后不久卷款跑路，典型的“杀猪盘”操作。' },
+  { name: '几鸡 (Jiji)', date: '2022-04', reason: '曾以公益和极低价吸引了海量用户，最终因资金链断裂及不可抗力因素关停，大量免费和低价付费用户受影响。' },
+  { name: '喵帕斯 (Nekomiao)', date: '2019-11', reason: '非常早期的老牌知名机场，在特殊敏感时期遭到严重打击后，官方频道清空，服务彻底停摆不再恢复。' },
+  { name: '极客云 (GeekCloud)', date: '2023-05', reason: '节点开始大面积离线且长期未修复，几天后客服和老板双双失联，留下了大批刚续费的年付用户。' },
+  { name: '跑路云 (PaoluCloud)', date: '2020-12', reason: '名字虽然叫跑路云，在圈内也算个梗，但运营了几年后最终“名副其实”地跑路了。' },
+  { name: '光圈 (Aperture)', date: '2022-11', reason: '曾有不少大V推荐，后期因上游链路及资金问题，频繁掉线，最终老板宣告破产清算，停止运营。' },
+  { name: '海豚云 (Dolphin)', date: '2023-08', reason: '搞了一波“双十一”、“618”提前大促后，网站直接变成无法访问，电报群全体禁言后消失。' }
+];
+---
+<BaseLayout title="跑路预警 - 避坑指南">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <SectionTitle title="跑路预警与避坑名单" description="为您实时追踪不靠谱、已跑路或存在极高跑路风险的机场，守护您的钱包安全。" />
+    
+    <div class="mt-12">
+      <!-- 预警提示区 -->
+      <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl mb-10">
+        <h3 class="text-xl font-bold text-red-800 flex items-center mb-3">
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+          如何判断一个机场有跑路风险？
+        </h3>
+        <ul class="list-disc list-inside text-red-700 space-y-2 ml-2">
+          <li><strong>突然推出极低折扣的“终身套餐”或“三年套餐”</strong>（通常是收割最后一波资金）。</li>
+          <li>官方电报群/售后群突然全体禁言，客服连续几天不回复。</li>
+          <li>节点大面积超时，且长时间没有修复或任何官方公告。</li>
+          <li>支付通道频繁更换，甚至只接受虚拟货币。</li>
+          <li>官网域名频繁更换且缺乏预告。</li>
+        </ul>
+      </div>
+
+      <!-- 跑路黑名单 -->
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">🚫 已确认跑路/黑名单记录</h2>
+      
+      <div class="space-y-4">
+        {warningList.map(item => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-lg font-bold text-slate-800">{item.name}</h3>
+              <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-full">确认时间：{item.date}</span>
+            </div>
+            <p class="text-slate-600">{item.reason}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center p-8 bg-white border border-slate-100 rounded-2xl shadow-sm">
+        <p class="text-slate-600 mb-4">想要省心、稳定、不踩坑的服务商？</p>
+        <a href="/brands/" class="inline-block bg-primary-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors">
+          查看我们的严选品牌库
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

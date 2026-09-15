@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import { categories } from '../../data/categories';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import CategoryNav from '../../components/CategoryNav.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return categories.map(cat => {
+    const filteredPosts = posts.filter(post => post.data.category === cat.id);
+    return {
+      params: { category: cat.id },
+      props: { category: cat, posts: filteredPosts }
+    };
+  });
+}
+
+const { category, posts } = Astro.props;
+---
+<BaseLayout title={`分类：${category.name}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <SectionTitle title={`${category.icon} ${category.name}`} description={category.description} align="left" />
+    <CategoryNav currentCategory={category.id} />
+    
+    {posts.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map(post => (
+          <ArticleCard 
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            category={post.data.category}
+            href={`/blog/${post.id}`}
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-20 text-slate-500">
+        该分类下暂时没有文章。
+      </div>
+    )}
+  </div>
+</BaseLayout>

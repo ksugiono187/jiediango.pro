@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+---
+<BaseLayout title="免责声明">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <SectionTitle title="严格的免责声明" description="在您使用本站内容与服务之前，请务必仔细阅读以下声明。" align="left" />
+    
+    <div class="prose-custom max-w-none mt-12 bg-white p-8 md:p-12 rounded-2xl border border-slate-100 shadow-sm">
+      <p>本站所有提供的文章、数据表格及评测结论，均基于作者在特定时间节点与网络环境下的独立测试，仅代表个人主观观点及经验分享，不构成任何绝对的购买建议或担保。</p>
+      
+      <h3>网络服务的不可控性</h3>
+      <p>网络服务受多种不可控因素（如政策变动、运营商线路调整、服务商运营策略等）影响，可能出现随时变化的情况。本站无法保证服务商在未来任何时刻的表现均与评测文章中的数据完全一致。</p>
+      
+      <h3>独立评估建议</h3>
+      <p>在此，我们强烈建议用户在做出任何付费订阅决定前，务必结合自身的实际网络环境、预算需求，并详细阅读服务商的官方服务条款与退款政策。</p>
+      
+      <h3>最终责任界定</h3>
+      <p>如因采纳本站提供之内容或建议而导致的任何直接、间接或连带的财产、隐私或数据损失，本站概不负责。您的继续访问即视为同意并接受本免责声明的全部内容。</p>
+    </div>
+  </div>
+</BaseLayout>

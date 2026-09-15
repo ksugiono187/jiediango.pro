@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import FAQ from '../components/FAQ.astro';
+import { fullFaqData } from '../data/faqData';
+---
+<BaseLayout title="常见问题解答 (FAQ)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <SectionTitle title="常见问题解答 (FAQ)" description="关于机场选择、使用及网络安全的常见疑问解答。" />
+    
+    <div class="mt-12 bg-white p-4 md:p-8 rounded-2xl border border-slate-100 shadow-sm">
+      <FAQ faqs={fullFaqData} />
+    </div>
+  </div>
+</BaseLayout>

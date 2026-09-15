@@ -1,0 +1,50 @@
+---
+import { brandGridData } from '../data/brandGridData';
+---
+
+<div class="mt-16">
+  <h3 class="text-xl font-bold text-slate-900 mb-6 text-center">所有品牌概览 (共 28 款)</h3>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    {brandGridData.map((brand) => (
+      <a 
+        href={`/brands/${brand.id}`} 
+        class="block aspect-square bg-white border border-slate-100 rounded-xl p-4 sm:p-5 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group cursor-pointer relative overflow-hidden"
+      >
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+        
+        <div class="relative z-10 flex-1 flex flex-col">
+          <div class="flex items-start justify-between mb-2">
+            <h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2">{brand.name}</h4>
+            <div class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded">
+              {brand.rating}
+            </div>
+          </div>
+          
+          <div class="mt-auto space-y-1.5 text-xs text-slate-600 bg-slate-50 p-3 rounded-lg border border-slate-100/50">
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400">价格</span>
+              <span class="font-medium text-slate-700">{brand.price}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400">流量</span>
+              <span class="font-medium text-slate-700">{brand.traffic}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400">线路</span>
+              <span class="font-medium text-slate-700">{brand.route}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400">协议</span>
+              <span class="font-medium text-slate-700">{brand.protocol}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400">开业</span>
+              <span class="font-medium text-slate-700">{brand.established}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>

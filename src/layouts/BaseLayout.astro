@@ -1,0 +1,40 @@
+---
+import SeoHead from '../components/SeoHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Comments from '../components/Comments.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const { title, description, canonical, noindex } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <SeoHead title={title} description={description} canonical={canonical} noindex={noindex} />
+  <body class="flex flex-col min-h-screen bg-slate-50 relative selection:bg-primary-200 selection:text-primary-900 overflow-x-hidden break-words">
+    <!-- Premium Background Effect -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary-400/20 blur-[120px] opacity-70 animate-pulse-slow"></div>
+      <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-cyan-400/20 blur-[120px] opacity-70"></div>
+      <div class="absolute top-[30%] left-[50%] w-[40%] h-[40%] rounded-full bg-indigo-400/15 blur-[100px] opacity-60"></div>
+    </div>
+
+    <Header />
+    <main class="flex-grow z-10 relative">
+      <slot />
+    </main>
+    
+    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 z-10 relative">
+      <Comments />
+    </div>
+
+    <Footer />
+  </body>
+</html>

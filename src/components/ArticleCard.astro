@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  category: string;
+  href: string;
+}
+const { title, description, pubDate, category, href } = Astro.props;
+---
+<article class="card p-6 flex flex-col h-full">
+  <div class="mb-4 flex items-center justify-between text-sm">
+    <span class="text-primary-600 font-medium bg-primary-50 px-2.5 py-0.5 rounded-full">{category}</span>
+    <time datetime={pubDate.toISOString()} class="text-slate-500">{pubDate.toLocaleDateString('zh-CN')}</time>
+  </div>
+  <h3 class="text-xl font-bold text-slate-900 mb-2 leading-tight hover:text-primary-600 transition-colors">
+    <a href={href}>{title}</a>
+  </h3>
+  <p class="text-slate-600 flex-grow text-sm mb-4 line-clamp-3">{description}</p>
+  <a href={href} class="text-primary-600 font-medium text-sm inline-flex items-center hover:text-primary-700">
+    阅读全文 →
+  </a>
+</article>
