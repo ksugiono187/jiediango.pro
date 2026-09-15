@@ -11,7 +11,6 @@ import ArticleCard from '../components/ArticleCard.astro';
 import TopicCluster from '../components/TopicCluster.astro';
 import FAQ from '../components/FAQ.astro';
 import Comments from '../components/Comments.astro';
-import CTASection from '../components/CTASection.astro';
 import NewsletterBox from '../components/NewsletterBox.astro';
 
 import { homepageData } from '../data/homepage';
@@ -104,6 +103,4 @@ const initialSelection = ['breezenet', 'feimao', 'muguang'];
       <Comments />
     </div>
   </section>
-  
-  <CTASection {...homepageData.cta} />
 </LandingLayout>
