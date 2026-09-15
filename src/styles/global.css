@@ -45,7 +45,8 @@
 
   /* Premium Prose Table Styling */
   .prose-custom table {
-    @apply w-full text-sm text-left overflow-hidden rounded-xl shadow-sm border border-slate-100;
+    @apply block w-full text-sm text-left overflow-x-auto whitespace-nowrap rounded-xl shadow-sm border border-slate-100;
+    -webkit-overflow-scrolling: touch;
   }
   .prose-custom thead {
     @apply bg-slate-50/80 backdrop-blur-md text-slate-700 border-b border-slate-200;
