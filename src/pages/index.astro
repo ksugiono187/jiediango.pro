@@ -90,47 +90,7 @@ const initialSelection = ['breezenet', 'feimao', 'muguang'];
   <!-- 4. 我们如何测试 -->
   <HowWeTest />
 
-  <!-- 5. 最新机场测评 -->
-  <section class="py-20 bg-slate-50 border-t border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle title="最新机场测评" description="独立深度的评测文章，追踪服务商最新状态。" />
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {recentPosts.map(post => (
-          <ArticleCard 
-            title={post.data.title}
-            description={post.data.description}
-            pubDate={post.data.pubDate}
-            category={post.data.category || '评测'}
-            href={`/blog/${post.slug}`}
-          />
-        ))}
-      </div>
-      <div class="text-center mt-12">
-        <a href="/blog" class="inline-flex items-center text-primary-600 font-bold hover:text-primary-700 transition-colors">
-          查看所有文章 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. 网络教程 -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle title="网络教程" description="从入门到进阶，解决各类网络疑难杂症。" />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {topics.map(topic => (
-          <TopicCluster 
-            title={topic.data.name}
-            description={topic.data.description}
-            count={topic.data.count || 5}
-            href={`/topics/${topic.id}`}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. FAQ -->
+  <!-- 5. FAQ -->
   <section id="faq" class="py-20 bg-slate-50 border-y border-slate-100">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionTitle title="常见问题解答 (FAQ)" />
