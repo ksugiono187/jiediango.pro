@@ -9,15 +9,16 @@ interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  ogType?: 'website' | 'article';
   noindex?: boolean;
 }
 
-const { title, description, canonical, noindex } = Astro.props;
+const { title, description, canonical, ogType, noindex } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <SeoHead title={title} description={description} canonical={canonical} noindex={noindex} />
+  <SeoHead title={title} description={description} canonical={canonical} ogType={ogType} noindex={noindex} />
   <body class="flex flex-col min-h-screen bg-slate-50 relative selection:bg-primary-200 selection:text-primary-900 overflow-x-hidden break-words">
     <!-- Premium Background Effect -->
     <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
