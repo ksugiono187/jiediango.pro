@@ -9,7 +9,7 @@ if (!post) {
   throw new Error("Cannot find the main blog post");
 }
 
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
 <BlogLayout 
@@ -19,6 +19,7 @@ const { Content } = await render(post);
   updatedDate={post.data.updatedDate}
   category={post.data.category}
   author={post.data.author}
+  headings={headings}
 >
   <Content />
 </BlogLayout>
