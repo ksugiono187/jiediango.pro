@@ -2,7 +2,7 @@
 name: "闪跃 FlashLeap"
 price: "¥24/月"
 rating: "9.1"
-description: "深度万字评测：闪跃 FlashLeap 2022年度表现。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供闪跃 FlashLeap最详尽的选购指南。"
+description: "深度万字评测：闪跃 FlashLeap。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供闪跃 FlashLeap最详尽的选购指南。"
 category: "service"
 tags: ["高强度抗封", "IEPL直通", "外贸专属", "低延迟"]
 featured: true

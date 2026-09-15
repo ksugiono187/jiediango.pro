@@ -2,7 +2,7 @@
 name: "浪网 WaveNet"
 price: "¥30/月"
 rating: "9.5"
-description: "深度万字评测：浪网 WaveNet 2019年度表现。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供浪网 WaveNet最详尽的选购指南。"
+description: "深度万字评测：浪网 WaveNet。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供浪网 WaveNet最详尽的选购指南。"
 category: "service"
 tags: ["高端专属", "尊享体验", "企业首选", "无缝漫游"]
 featured: true

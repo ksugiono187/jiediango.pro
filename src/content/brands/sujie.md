@@ -2,7 +2,7 @@
 name: "速界 SuJie"
 price: "¥15/月"
 rating: "8.7"
-description: "深度万字评测：速界 SuJie 2022年度表现。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供速界 SuJie最详尽的选购指南。"
+description: "深度万字评测：速界 SuJie。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供速界 SuJie最详尽的选购指南。"
 category: "service"
 tags: ["平价体验", "学生党推荐", "够用就行", "佛系冲浪"]
 featured: true

@@ -2,7 +2,7 @@
 name: "微风网络 Breezenet"
 price: "¥8/月 （年付折算月）"
 rating: "9.5"
-description: "深度万字评测：微风网络 Breezenet 2022年度表现。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供微风网络 Breezenet最详尽的选购指南。"
+description: "深度万字评测：微风网络 Breezenet。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供微风网络 Breezenet最详尽的选购指南。"
 category: "service"
 tags: ["超高性价比", "大流量", "新手首选", "BGP中转"]
 featured: true

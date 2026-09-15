@@ -2,7 +2,7 @@
 name: "Firefly机场"
 price: "¥25/月"
 rating: "8.6"
-description: "深度万字评测：Firefly机场 2023年度表现。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供Firefly机场最详尽的选购指南。"
+description: "深度万字评测：Firefly机场。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供Firefly机场最详尽的选购指南。"
 category: "service"
 tags: ["高速直连", "大带宽", "极简体验", "无套路"]
 featured: true

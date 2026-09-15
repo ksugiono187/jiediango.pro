@@ -2,7 +2,7 @@
 name: "梯子云 LadderCloud"
 price: "¥25/月"
 rating: "8.3"
-description: "深度万字评测：梯子云 LadderCloud 2024年度表现。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供梯子云 LadderCloud最详尽的选购指南。"
+description: "深度万字评测：梯子云 LadderCloud。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供梯子云 LadderCloud最详尽的选购指南。"
 category: "service"
 tags: ["傻瓜式操作", "一键连接", "多设备共享", "无门槛"]
 featured: true

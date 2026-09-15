@@ -2,7 +2,7 @@
 name: "快狸 KuaiLi"
 price: "¥15/月"
 rating: "9.3"
-description: "深度万字评测：快狸 KuaiLi 2019年度表现。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供快狸 KuaiLi最详尽的选购指南。"
+description: "深度万字评测：快狸 KuaiLi。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供快狸 KuaiLi最详尽的选购指南。"
 category: "service"
 tags: ["极具性价比", "低价高配", "随时在线", "值得一试"]
 featured: true

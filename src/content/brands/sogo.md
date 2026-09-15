@@ -2,7 +2,7 @@
 name: "Sogo云"
 price: "¥25/月"
 rating: "8.6"
-description: "深度万字评测：Sogo云 2022年度表现。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供Sogo云最详尽的选购指南。"
+description: "深度万字评测：Sogo云。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供Sogo云最详尽的选购指南。"
 category: "service"
 tags: ["稳定不掉线", "超大带宽", "适合下载", "客服秒回"]
 featured: true
