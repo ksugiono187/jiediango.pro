@@ -3,13 +3,14 @@ import LandingLayout from '../layouts/LandingLayout.astro';
 import Hero from '../components/Hero.astro';
 import StatsStrip from '../components/StatsStrip.astro';
 import SectionTitle from '../components/SectionTitle.astro';
-import FeatureCard from '../components/FeatureCard.astro';
-import ArticleCard from '../components/ArticleCard.astro';
-import TopicCluster from '../components/TopicCluster.astro';
+import UserPersona from '../components/UserPersona.astro';
 import BrandCard from '../components/BrandCard.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
-import UserPersona from '../components/UserPersona.astro';
+import HowWeTest from '../components/HowWeTest.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import TopicCluster from '../components/TopicCluster.astro';
 import FAQ from '../components/FAQ.astro';
+import Comments from '../components/Comments.astro';
 import CTASection from '../components/CTASection.astro';
 import NewsletterBox from '../components/NewsletterBox.astro';
 
@@ -46,22 +47,15 @@ const initialSelection = ['breezenet', 'feimao', 'muguang'];
   <Hero {...homepageData.hero} />
   <StatsStrip stats={homepageData.stats} />
 
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle title="为什么选择我们？" description="全方位的内容生态，为您解决数字生活中的各种痛点。" />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {homepageData.features.map(f => <FeatureCard {...f} />)}
-      </div>
-    </div>
-  </section>
-
+  <!-- 1. 你是哪一种用户 -->
   <UserPersona />
 
+  <!-- 2. 编辑精选 -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle title="机场推荐 优选品牌库" description="经过深度体验与长期测试，为您推荐最靠谱的服务商。" />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {brands.slice(0, 8).map(brand => (
+      <SectionTitle title="🏆 2026 编辑精选" description="精挑细选，闭眼不坑。只展示综合实力最强的顶级服务商。" />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {brands.slice(0, 6).map(brand => (
           <BrandCard 
             name={brand.data.name}
             description={brand.data.description}
@@ -75,56 +69,81 @@ const initialSelection = ['breezenet', 'feimao', 'muguang'];
     </div>
   </section>
 
+  <!-- 3. 横向对比 -->
   <section class="py-20 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle title="如何选择适合你的产品？" description="多维度的对比参考，帮您避免踩坑。" />
+      <SectionTitle title="📊 28 款服务商横向对比" description="硬核数据，真实对比，帮您找到最适合的产品。" />
       <ComparisonTable 
         brands={brandList}
         dimensions={homeCompareDimensions}
         data={homeCompareData}
         initialSelection={initialSelection}
       />
-      
-      <div class="mt-16 max-w-4xl mx-auto prose prose-slate prose-lg lg:prose-xl">
-        <h3 class="text-2xl font-bold text-slate-900 mb-6 text-center">🏆 2026 年度编辑精选推荐指南</h3>
-        <p class="text-slate-600 leading-relaxed mb-6">
-          面对市面上琳琅满目的服务商，到底该如何选择？经过我们长达数月的深度多维度测试，结合价格、速度、稳定性和解锁能力，我们为您总结了以下三款具有代表性的优质产品：
-        </p>
-        
-        <div class="bg-blue-50 rounded-2xl p-6 mb-6 border border-blue-100">
-          <h4 class="text-xl font-bold text-blue-900 mb-2 flex items-center gap-2">
-            🥇 综合推荐：<a href="/brands/breezenet" class="text-blue-700 hover:text-blue-900 hover:underline transition-colors decoration-2 underline-offset-4">微风网络 (Breezenet)</a>
-          </h4>
-          <p class="text-slate-700 m-0">
-            <strong>推荐理由：极致性价比与大流量的完美结合。</strong>作为今年的黑马，微风网络在价格（低至 8 元/月）和性能之间找到了完美的平衡点。它不仅提供海量原生 IP 带来的完美流媒体解锁体验，更罕见地做到<strong>“基本不限制设备连接数”</strong>。无论您是学生党、重度视频消费者，还是需要多设备同时在线的大家庭，微风网络都能以最低的成本提供最优质的翻墙体验，是我们当之无愧的性价比之王。
-          </p>
-        </div>
-
-        <div class="bg-slate-50 rounded-2xl p-6 mb-6 border border-slate-200">
-          <h4 class="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
-            🥈 高性能选择：<a href="/brands/feimao" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors decoration-2 underline-offset-4">飞猫云 (Feimao)</a>
-          </h4>
-          <p class="text-slate-700 m-0">
-            <strong>推荐理由：专为高端外贸与电竞玩家打造的顶级专线。</strong>如果您对网络的容错率为零，不能接受哪怕一秒钟的卡顿，那么飞猫云是一个非常值得考虑的选择。它采用了极其昂贵的 <strong>2.5Gbps IPLC/IEPL 物理内网专线</strong>。这意味着即便在最拥堵的晚高峰，它的延迟依然能保持在较低水平，且能有效减少公网丢包。虽然设备数有限制，但对于外贸商务、高阶游戏玩家和企业用户来说，它的高稳定性能够很好地满足专业需求。
-          </p>
-        </div>
-
-        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
-          <h4 class="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
-            🥉 性价比备选：<a href="/brands/muguang" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors decoration-2 underline-offset-4">暮光网络 (Muguang)</a>
-          </h4>
-          <p class="text-slate-700 m-0">
-            <strong>推荐理由：简单纯粹，良心直连。</strong>暮光主打精选核心节点与稳定的日常使用体验，非常适合轻度冲浪、查阅资料以及刚接触翻墙的入门级用户。它没有过于花哨的功能，但在核心的高峰期依然能保持良好的速度体验。亲民的价格加上全天候的在线客服，让它成为备用节点或入门的首选。
-          </p>
-        </div>
+      <div class="mt-8 text-center">
+         <a href="/compare" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-slate-900 hover:bg-primary-600 shadow-lg hover:shadow-primary-600/30 transition-all duration-300">
+           查看完整对比表
+         </a>
       </div>
     </div>
   </section>
 
-  <section id="faq" class="py-20 bg-slate-50">
+  <!-- 4. 我们如何测试 -->
+  <HowWeTest />
+
+  <!-- 5. 最新机场测评 -->
+  <section class="py-20 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionTitle title="最新机场测评" description="独立深度的评测文章，追踪服务商最新状态。" />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {recentPosts.map(post => (
+          <ArticleCard 
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            category={post.data.category || '评测'}
+            href={`/blog/${post.slug}`}
+          />
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/blog" class="inline-flex items-center text-primary-600 font-bold hover:text-primary-700 transition-colors">
+          查看所有文章 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 网络教程 -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionTitle title="网络教程" description="从入门到进阶，解决各类网络疑难杂症。" />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {topics.map(topic => (
+          <TopicCluster 
+            title={topic.data.name}
+            description={topic.data.description}
+            count={topic.data.count || 5}
+            href={`/topics/${topic.id}`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <section id="faq" class="py-20 bg-slate-50 border-y border-slate-100">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionTitle title="常见问题解答 (FAQ)" />
       <FAQ faqs={homepageData.faqs} />
     </div>
   </section>
+
+  <!-- 8. 评论交流 -->
+  <section class="pb-20 pt-10 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Comments />
+    </div>
+  </section>
+  
+  <CTASection {...homepageData.cta} />
 </LandingLayout>

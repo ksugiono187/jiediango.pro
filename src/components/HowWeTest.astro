@@ -1,0 +1,55 @@
+---
+// src/components/HowWeTest.astro
+import SectionTitle from './SectionTitle.astro';
+
+const metrics = [
+  {
+    title: '速度与带宽',
+    icon: '⚡',
+    desc: '在晚高峰时期使用多地服务器进行数百次并发测速，记录其峰值带宽与平均速度，确保大流量场景不掉链子。'
+  },
+  {
+    title: '延迟与稳定性',
+    icon: '🎯',
+    desc: '长达 7x24 小时的持续 ping 测与连通率监控，严查丢包率与抖动范围，保障游戏玩家与外贸用户的极端稳定性需求。'
+  },
+  {
+    title: '流媒体解锁',
+    icon: '🎬',
+    desc: '针对 Netflix、Disney+、ChatGPT、TikTok 等核心服务进行定点连通性测试，验证是否原生 IP 以及解锁是否稳定防连坐。'
+  },
+  {
+    title: '价格与服务',
+    icon: '💎',
+    desc: '综合考量流量单价、套餐门槛、工单响应速度及退款保障条款，真正评估“一分钱一分货”的性价比真实度。'
+  }
+];
+---
+
+<section class="py-20 bg-white border-y border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionTitle 
+      title="🔬 我们如何测试？" 
+      description="拒绝云评测，用真实数据说话。所有推荐均建立在长达数月的真金白银多维度测试之上。" 
+    />
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      {metrics.map(metric => (
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200/60 hover:shadow-lg transition-shadow duration-300">
+          <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-2xl shadow-sm mb-6 border border-slate-100">
+            {metric.icon}
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">{metric.title}</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">{metric.desc}</p>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="/about" class="inline-flex items-center gap-2 text-primary-600 font-bold hover:text-primary-700 transition-colors">
+        查看完整的测试方法与评分标准
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
