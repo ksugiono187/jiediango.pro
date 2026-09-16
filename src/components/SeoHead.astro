@@ -9,6 +9,7 @@ interface Props {
   ogType?: 'website' | 'article';
   ogImage?: string;
   noindex?: boolean;
+  jsonLd?: string;
 }
 
 const { 
@@ -18,7 +19,8 @@ const {
   keywords = site.keywords,
   ogType = 'website',
   ogImage = new URL('/default-og.png', Astro.site || site.domain).href,
-  noindex = false
+  noindex = false,
+  jsonLd
 } = Astro.props;
 
 const pageTitle = title === site.name ? title : `${title} - ${site.name}`;
@@ -31,6 +33,7 @@ const pageTitle = title === site.name ? title : `${title} - ${site.name}`;
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="description" content={description} />
   {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+  <meta name="author" content={site.defaultAuthor} />
   
   <link rel="canonical" href={canonical} />
   
@@ -40,6 +43,17 @@ const pageTitle = title === site.name ? title : `${title} - ${site.name}`;
   <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content={site.name} />
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content={site.socials.twitter} />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  
+  {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
   
   {noindex && <meta name="robots" content="noindex, nofollow" />}
+
 </head>

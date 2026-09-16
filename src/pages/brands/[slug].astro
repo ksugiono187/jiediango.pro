@@ -70,8 +70,31 @@ const subRatings = [
   { name: '稳定性', stars: getStars(brand.id, 4) },
   { name: '流媒体', stars: getStars(brand.id, 5) },
 ];
+
+const reviewJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Product",
+    "name": brand.data.name,
+    "description": brand.data.description
+  },
+  "author": {
+    "@type": "Person",
+    "name": "节点GO 评测团队"
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": brand.data.rating || 5,
+    "bestRating": "5"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "节点GO"
+  }
+});
 ---
-<BaseLayout title={brand.data.name} description={brand.data.description}>
+<BaseLayout title={brand.data.name} description={brand.data.description} ogType="article" jsonLd={reviewJsonLd}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <Breadcrumb items={breadcrumbs} />
     

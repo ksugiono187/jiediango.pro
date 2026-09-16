@@ -21,8 +21,21 @@ export async function getStaticPaths() {
 
 const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await render(post);
+
+const articleJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": new URL('/default-og.png', Astro.url).href,
+  "author": {
+    "@type": "Person",
+    "name": "节点GO 编辑部"
+  },
+  "datePublished": post.data.pubDate ? new Date(post.data.pubDate).toISOString() : undefined,
+});
 ---
-<BaseLayout title={`${post.data.title} - 博客与资讯`}>
+<BaseLayout title={`${post.data.title} - 博客与资讯`} description={post.data.description} ogType="article" jsonLd={articleJsonLd}>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="mb-12 text-center">
       <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{post.data.title}</h1>
