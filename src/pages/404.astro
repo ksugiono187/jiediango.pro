@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="页面未找到 (404) - 节点GO" description="抱歉，您访问的页面不存在。">
+  <div class="min-h-[70vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-max mx-auto text-center">
+      <main class="sm:flex">
+        <p class="text-4xl font-extrabold text-primary-600 sm:text-5xl">404</p>
+        <div class="sm:ml-6">
+          <div class="sm:border-l sm:border-slate-200 sm:pl-6">
+            <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight sm:text-5xl">页面未找到</h1>
+            <p class="mt-4 text-base text-slate-500">抱歉，我们找不到您想要访问的页面。它可能已被移动、删除，或者您输入了错误的地址。</p>
+          </div>
+          <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6 justify-center sm:justify-start">
+            <a
+              href="/"
+              class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+            >
+              返回首页
+            </a>
+            <a
+              href="/articles"
+              class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+            >
+              浏览博客
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</BaseLayout>

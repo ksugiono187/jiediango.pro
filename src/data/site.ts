@@ -8,5 +8,6 @@ export const site = {
     twitter: '#',
     github: '#',
     youtube: '#'
-  }
+  },
+  keywords: ['机场推荐', '科学上网', '节点测速', 'SSR', 'V2ray', 'Clash', '翻墙教程', '机场评测', '流媒体解锁', 'Netflix解锁']
 };
