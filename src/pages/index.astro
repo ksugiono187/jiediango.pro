@@ -41,7 +41,7 @@ const topics = await getCollection('topics');
 const brandList = brands.map(b => ({ id: b.id, name: b.data.name }));
 const initialSelection = ['breezenet', 'feimao', 'muguang'];
 ---
-<LandingLayout description="节点GO致力于提供最专业、客观的机场测速与评测指南。涵盖流媒体解锁、游戏延迟、性价比等多维指标，助您快速找到最稳定可靠的网络服务商。">
+<LandingLayout title="机场推荐" description="节点GO致力于提供最专业、客观的机场测速与评测指南。涵盖流媒体解锁、游戏延迟、性价比等多维指标，助您快速找到最稳定可靠的网络服务商。">
   <Hero {...homepageData.hero} />
   <StatsStrip stats={homepageData.stats} />
 
