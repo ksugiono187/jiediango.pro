@@ -54,6 +54,13 @@ const pageTitle = title === site.name ? title : `${title} - ${site.name}`;
   
   {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
   
-  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  {noindex ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <>
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    </>
+  )}
 
 </head>
