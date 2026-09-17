@@ -21,7 +21,7 @@ export const footerNav = {
     { name: '跑路预警', href: '/warning/' },
     { name: '隐私政策', href: '/privacy/' },
     { name: '使用条款', href: '/terms/' },
-    { name: '联系方式', href: '/about/' },
-    { name: '免责声明', href: '/disclaimer' }
+    { name: '联系方式', href: '/contact/' },
+    { name: '免责声明', href: '/disclaimer/' }
   ]
 };
