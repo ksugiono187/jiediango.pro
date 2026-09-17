@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
-<BaseLayout title={`标签：${tag}`}>
+<BaseLayout title={`标签：${tag}_节点GO`} description={`节点GO关于 ${tag} 标签的所有精选评测与教程指南文章集合。`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <SectionTitle title={`# ${tag}`} description={`关于 ${tag} 的所有文章集合`} align="left" />
     
