@@ -1,6 +1,6 @@
 export const homepageData = {
   hero: {
-    title: '2026全网优质机场节点评测与推荐',
+    title: '2026全网优质机场推荐与节点评测',
     subtitle: '经过我们团队长期真实测速与防封锁测试，为您挑选出2026年最稳定、最高性价比的科学上网服务商，拒绝云评测，拒绝跑路坑。',
     primaryCta: { text: '立即查看机场测评', href: '/blog/' },
     secondaryCta: { text: '机场对比', href: '/compare/' }
