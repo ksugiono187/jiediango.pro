@@ -4,6 +4,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 
 interface Props {
   title: string;
+  seoTitle?: string;
   description: string;
   pubDate: Date;
   updatedDate?: Date;
@@ -12,7 +13,7 @@ interface Props {
   headings?: { depth: number; slug: string; text: string }[];
 }
 
-const { title, description, pubDate, updatedDate, category, author, headings = [] } = Astro.props;
+const { title, seoTitle, description, pubDate, updatedDate, category, author, headings = [] } = Astro.props;
 
 const breadcrumbs = [
   { name: '首页', href: '/' },
@@ -21,7 +22,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title={title} description={description} ogType="article">
+<BaseLayout title={seoTitle || title} description={description} ogType="article">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
       

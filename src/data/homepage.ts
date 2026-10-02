@@ -1,7 +1,7 @@
 export const homepageData = {
   hero: {
-    title: '2026全网优质机场推荐与节点评测',
-    subtitle: '经过我们团队长期真实测速与防封锁测试，为您挑选出2026年最稳定、最高性价比的科学上网服务商，拒绝云评测，拒绝跑路坑。',
+    title: '2026 节点推荐：稳定高速机场实测与推荐',
+    subtitle: '节点GO整理2026最新节点推荐，通过速度、Ping延迟、晚高峰稳定性、线路质量、流媒体解锁和价格等维度进行实际对比，为不同使用需求提供稳定高速的机场与节点选择参考。',
     primaryCta: { text: '立即查看机场测评', href: '/blog/' },
     secondaryCta: { text: '机场对比', href: '/compare/' }
   },
