@@ -20,9 +20,31 @@ const breadcrumbs = [
   { name: '机场测评', href: '/blog/' },
   { name: title, href: '#' }
 ];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": seoTitle || title,
+  "description": description,
+  "datePublished": pubDate.toISOString(),
+  "dateModified": (updatedDate || pubDate).toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": author || "节点团队"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "节点GO",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jiediango.pro/favicon.svg"
+    }
+  }
+};
+const jsonLd = JSON.stringify(articleSchema);
 ---
 
-<BaseLayout title={seoTitle || title} description={description} ogType="article">
+<BaseLayout title={seoTitle || title} description={description} ogType="article" jsonLd={jsonLd}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
       

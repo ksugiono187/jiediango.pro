@@ -140,6 +140,9 @@ const reviewJsonLd = JSON.stringify({
           </div>
           
           <div class="p-8 prose-custom max-w-none">
+            <p class="text-sm text-slate-500 mb-6 pb-6 border-b border-slate-100">
+              💡 本文是 <strong>{brand.data.name}</strong> 专项评测，最后更新于 {new Date().toLocaleDateString('zh-CN')}。如果您想横向对比更多优质服务商，欢迎参考我们的 <a href="/" class="text-primary-600 font-medium hover:underline">{['节点推荐', '2026节点推荐', '节点推荐排行榜', '节点实测推荐'][brand.id.length % 4]}</a>。
+            </p>
             <Content />
             <div class="mt-8">
               <a href={brand.data.url || "#"} class="btn-primary" rel="nofollow noopener" target="_blank">前往官网了解更多</a>

@@ -40,8 +40,30 @@ const topics = await getCollection('topics');
 
 const brandList = brands.map(b => ({ id: b.id, name: b.data.name }));
 const initialSelection = ['breezenet', 'feimao', 'muguang'];
+
+const schemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "节点GO",
+    "url": "https://jiediango.pro/"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": homepageData.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+const jsonLd = JSON.stringify(schemaData);
 ---
-<LandingLayout title="节点推荐｜2026稳定高速机场推荐与实测排名" description="2026最新节点推荐与机场实测排名，从速度、延迟、稳定性、线路质量、流媒体解锁和价格等方面进行对比，帮助你快速选择适合自己的稳定高速节点。">
+<LandingLayout title="节点推荐｜2026稳定高速机场推荐与实测排名" description="2026最新节点推荐与机场实测排名，从速度、延迟、稳定性、线路质量、流媒体解锁和价格等方面进行对比，帮助你快速选择适合自己的稳定高速节点。" jsonLd={jsonLd}>
   <Hero {...homepageData.hero} />
   <StatsStrip stats={homepageData.stats} />
   

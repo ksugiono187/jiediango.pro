@@ -4,11 +4,12 @@ import BaseLayout from './BaseLayout.astro';
 interface Props {
   title?: string;
   description?: string;
+  jsonLd?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, jsonLd } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
   <slot />
 </BaseLayout>
