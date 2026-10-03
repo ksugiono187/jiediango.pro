@@ -19,8 +19,12 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+
+const titleSuffix = /节点|机场|推荐|评测|指南|教程/.test(tag) ? '相关文章合集' : '2026相关优质文章精选合集';
+const dynamicTitle = `${tag}标签：${titleSuffix}`;
+const dynamicDesc = `节点GO关于 ${tag} 标签的所有精选文章集合。获取最新最全的相关资源、深度测速指南及技巧分享。`;
 ---
-<BaseLayout title={`${tag}标签：2026节点推荐与机场相关文章合集`} description={`节点GO关于 ${tag} 标签的所有精选评测与教程指南文章集合。获取2026最新最全的与 ${tag} 相关的机场测速、技术指南及套餐对比内容。`}>
+<BaseLayout title={dynamicTitle} description={dynamicDesc}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <SectionTitle title={`# ${tag}`} description={`关于 ${tag} 的所有文章集合`} align="left" />
     
