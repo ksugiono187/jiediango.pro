@@ -20,6 +20,7 @@ const brands = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/brands" }),
   schema: z.object({
     name: z.string(),
+    seoTitle: z.string().optional(),
     description: z.string(),
     category: z.string(),
     tags: z.array(z.string()).default([]),

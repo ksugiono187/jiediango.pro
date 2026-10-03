@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
 const { category, posts } = Astro.props;
 ---
-<BaseLayout title={`分类：${category.name}_节点GO`} description={`节点GO ${category.name} 分类文章精选。${category.description || ''}`}>
+<BaseLayout title={`${category.name}：2026最新机场节点${category.name}文章精选`} description={`节点GO为您精选关于${category.name}领域的最新优质文章，提供${category.description} 涵盖2026年最新机场推荐、节点评测与科学上网技巧等实用信息，帮助您全面了解相关知识。`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <SectionTitle title={`${category.icon} ${category.name}`} description={category.description} align="left" />
     <CategoryNav currentCategory={category.id} />

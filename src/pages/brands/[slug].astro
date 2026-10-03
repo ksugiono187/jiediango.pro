@@ -93,8 +93,10 @@ const reviewJsonLd = JSON.stringify({
     "name": "节点GO"
   }
 });
+const defaultSeoTitle = `${brand.data.name}怎么样？2026最新评测、套餐价格与节点使用体验`;
+const pageTitle = brand.data.seoTitle || defaultSeoTitle;
 ---
-<BaseLayout title={brand.data.name} description={brand.data.description} ogType="article" jsonLd={reviewJsonLd}>
+<BaseLayout title={pageTitle} description={brand.data.description} ogType="article" jsonLd={reviewJsonLd}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <Breadcrumb items={breadcrumbs} />
     
