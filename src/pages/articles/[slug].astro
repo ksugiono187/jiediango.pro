@@ -22,11 +22,15 @@ export async function getStaticPaths() {
 const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await render(post);
 
+const articleDesc = post.data.description && post.data.description.length >= 130 
+  ? post.data.description 
+  : `${post.data.description}。节点GO深入剖析网络技术与科学上网核心技巧，为您提供详尽的实测数据、客户端配置指南与常见问题排错建议，助您全面提升节点连接速度与网络使用体验。`;
+
 const articleJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": post.data.title,
-  "description": post.data.description,
+  "description": articleDesc,
   "image": new URL('/default-og.png', Astro.url).href,
   "author": {
     "@type": "Person",
@@ -35,7 +39,7 @@ const articleJsonLd = JSON.stringify({
   "datePublished": post.data.pubDate ? new Date(post.data.pubDate).toISOString() : undefined,
 });
 ---
-<BaseLayout title={`${post.data.title} - 博客与资讯`} description={post.data.description} ogType="article" jsonLd={articleJsonLd}>
+<BaseLayout title={`${post.data.title} - 博客与资讯`} description={articleDesc} ogType="article" jsonLd={articleJsonLd}>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="mb-12 text-center">
       <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{post.data.title}</h1>

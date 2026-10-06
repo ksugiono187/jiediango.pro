@@ -22,7 +22,7 @@ const { posts } = Astro.props;
 
 const titleSuffix = /节点|机场|推荐|评测|指南|教程/.test(tag) ? '相关文章合集' : '2026相关优质文章精选合集';
 const dynamicTitle = `${tag}标签：${titleSuffix}`;
-const dynamicDesc = `节点GO关于 ${tag} 标签的所有精选文章集合。获取最新最全的相关资源、深度测速指南及技巧分享。`;
+const dynamicDesc = `节点GO关于 ${tag} 标签的所有精选文章与深度评测合集。为您整理2026年最新与 ${tag} 相关的节点测速报告、客户端使用教程、机场选购横评及网络优化方案，内容持续更新，助您快速获取专业有价值的参考资料。`;
 ---
 <BaseLayout title={dynamicTitle} description={dynamicDesc}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

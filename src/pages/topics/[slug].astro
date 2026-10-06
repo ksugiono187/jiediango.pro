@@ -13,8 +13,12 @@ export async function getStaticPaths() {
 
 const { topic } = Astro.props;
 const { Content } = await render(topic);
+
+const topicDesc = topic.data.description && topic.data.description.length >= 130
+  ? topic.data.description
+  : `${topic.data.description}。本专题由节点GO专业团队系统整理汇编，深度涵盖核心技术原理、实用配置教程及精选服务商横评对比，为您提供一站式专题阅读与选购参考指南。`;
 ---
-<BaseLayout title={topic.data.title} description={topic.data.description}>
+<BaseLayout title={topic.data.title} description={topicDesc}>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <SectionTitle title={topic.data.title} description={topic.data.description} />
     

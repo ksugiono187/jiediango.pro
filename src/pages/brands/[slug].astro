@@ -71,13 +71,19 @@ const subRatings = [
   { name: '流媒体', stars: getStars(brand.id, 5) },
 ];
 
+const defaultSeoTitle = `${brand.data.name}怎么样？2026最新稳定机场节点评测、套餐价格、晚高峰测速与流媒体解锁使用体验`;
+const pageTitle = brand.data.seoTitle || defaultSeoTitle;
+
+const defaultSeoDesc = `${brand.data.name}怎么样？2026最新${brand.data.name}节点评测与机场选购指南。本文深度汇总${brand.data.name}的最新节点线路分布、套餐资费价格、晚高峰连接速度、Ping延迟稳定性、流媒体解锁能力及真实用户反馈，提供多设备客户端配置教程与性价比分析，帮助广大用户全面了解该机场是否值得购买，为科学上网提供专业参考指南与避坑建议。`;
+const pageDesc = (brand.data.description && brand.data.description.length >= 130) ? brand.data.description : defaultSeoDesc;
+
 const reviewJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Review",
   "itemReviewed": {
     "@type": "Product",
     "name": brand.data.name,
-    "description": brand.data.description
+    "description": pageDesc
   },
   "author": {
     "@type": "Person",
@@ -93,10 +99,8 @@ const reviewJsonLd = JSON.stringify({
     "name": "节点GO"
   }
 });
-const defaultSeoTitle = `${brand.data.name}怎么样？2026最新稳定机场节点评测、套餐价格、晚高峰测速与流媒体解锁使用体验`;
-const pageTitle = brand.data.seoTitle || defaultSeoTitle;
 ---
-<BaseLayout title={pageTitle} description={brand.data.description} ogType="article" jsonLd={reviewJsonLd}>
+<BaseLayout title={pageTitle} description={pageDesc} ogType="article" jsonLd={reviewJsonLd}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <Breadcrumb items={breadcrumbs} />
     
