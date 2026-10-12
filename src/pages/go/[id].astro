@@ -16,7 +16,7 @@ const { target } = Astro.props;
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <SeoHead title={`正在前往... - ${site.name}`} noindex={true} />
+  <SeoHead title="正在前往..." noindex={true} />
   <meta http-equiv="refresh" content={`2;url=${target}`} />
   <script is:inline define:vars={{ target }}>
     setTimeout(() => {

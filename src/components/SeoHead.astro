@@ -23,7 +23,15 @@ const {
   jsonLd
 } = Astro.props;
 
-const pageTitle = title === site.name ? title : `${title} - ${site.name}`;
+const siteSuffix = site.name;
+const cleanTitle = (title || site.name).trim();
+const hasSuffix = cleanTitle === siteSuffix ||
+  cleanTitle.endsWith(` - ${siteSuffix}`) ||
+  cleanTitle.endsWith(`- ${siteSuffix}`) ||
+  cleanTitle.endsWith(`｜${siteSuffix}`) ||
+  cleanTitle.endsWith(`| ${siteSuffix}`);
+
+const pageTitle = hasSuffix ? cleanTitle : `${cleanTitle} - ${siteSuffix}`;
 ---
 
 <head>

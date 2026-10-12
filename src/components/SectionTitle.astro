@@ -3,10 +3,12 @@ interface Props {
   title: string;
   description?: string;
   align?: 'left' | 'center';
+  as?: 'h1' | 'h2';
 }
-const { title, description, align = 'center' } = Astro.props;
+const { title, description, align = 'center', as = 'h2' } = Astro.props;
+const Heading = as;
 ---
 <div class={`mb-12 ${align === 'center' ? 'text-center' : 'text-left'}`}>
-  <h2 class="text-3xl font-bold text-slate-900">{title}</h2>
+  <Heading class="text-3xl font-bold text-slate-900">{title}</Heading>
   {description && <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">{description}</p>}
 </div>

@@ -20,7 +20,7 @@ const topicDesc = topic.data.description && topic.data.description.length >= 130
 ---
 <BaseLayout title={topic.data.title} description={topicDesc}>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <SectionTitle title={topic.data.title} description={topic.data.description} />
+    <SectionTitle as="h1" title={topic.data.title} description={topic.data.description} />
     
     <div class="prose-custom max-w-none mt-12 bg-white p-8 rounded-xl border border-slate-100 shadow-sm">
       <Content />

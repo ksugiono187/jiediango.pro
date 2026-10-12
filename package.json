@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "astro dev --host",
     "build": "astro build",
+    "verify:seo": "node scripts/verify-seo.mjs",
+    "indexnow": "node scripts/indexnow.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
