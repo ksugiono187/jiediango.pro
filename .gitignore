@@ -23,5 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# IndexNow cache
+# IndexNow cache & logs
 .indexnow-cache.json
+logs/
