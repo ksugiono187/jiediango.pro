@@ -13,7 +13,7 @@ export const brandGridData: BrandInfo[] = [
   { id: 'breezenet', name: '微风网络 Breezenet', price: '¥8/月 （年付折算月）', traffic: '200GB', route: 'BGP中转', protocol: 'VLESS', established: '2022年', rating: '9.5' },
   { id: 'feimao', name: '飞猫', price: '¥7/月 （年付折算月）', traffic: '150GB', route: 'IEPL专线', protocol: 'VLESS', established: '2023年', rating: '9.8' },
   { id: 'muguang', name: '暮光网络', price: '¥9/月 （年付折算月）', traffic: '150GB', route: 'CN2 GIA', protocol: 'VLESS', established: '2021年', rating: '9.2' },
-  { id: 'yinxingren', name: '隐形人', price: '¥24/月', traffic: '144GB', route: 'CN2 GIA', protocol: 'VLESS', established: '2021年', rating: '9.2' },
+  { id: 'yinxingren', name: '隐形人', price: '¥24/月起', traffic: '144GB', route: 'IEPL专线', protocol: 'VLESS', established: '2021年', rating: '9.5' },
   { id: 'wuyou', name: '无忧', price: '¥19/月', traffic: '100GB', route: 'CN2 GIA', protocol: 'VLESS', established: '2021年', rating: '8.9' },
   { id: 'lingmao', name: '灵猫', price: '¥25/月', traffic: '150GB', route: 'BGP中转', protocol: '公开资料未标明', established: '2020年', rating: '9.0' },
   { id: 'shanyue', name: '闪跃 FlashLeap', price: '¥24/月', traffic: '150GB', route: 'IEPL专线', protocol: 'VLESS', established: '2022年', rating: '9.1' },

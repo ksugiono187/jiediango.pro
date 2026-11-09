@@ -100,7 +100,7 @@ author: "节点团队"
 | 1 | 微风网络 Breezenet | 1050 Mbps | 436 Mbps | 20 ms (HK/JP) | 99.99% | 严格零日志/RAM服务器 | 5-10台 | ¥8/月 （年付折算月） | 9.8 / 10 | 2026-11-08 |
 | 2 | 飞猫 | 895 Mbps | 425 Mbps | 24 ms (HK/JP) | 99.99% | 严格零日志/RAM服务器 | 不限制 | ¥7/月 （年付折算月） | 9.8 / 10 | 2026-11-06 |
 | 3 | 暮光网络 | 1050 Mbps | 308 Mbps | 28 ms (HK/JP) | 99.99% | 严格零日志/RAM服务器 | 5台 | ¥9/月 （年付折算月） | 9.8 / 10 | 2026-11-05 |
-| 4 | 隐形人 | 400 Mbps | 78 Mbps | 85 ms | 98.8% | 基础加密/不留存 | 2台 | ¥24/月 | 9.2 / 10 | 2026-11-07 |
+| 4 | 隐形人 | 865 Mbps | 328 Mbps | 18 ms (HK/JP) | 99.99% | 严格零日志/RAM无盘服务器 | 3-5台 | ¥24/月起 | 9.5 / 10 | 2026-11-07 |
 | 5 | 无忧 | 423 Mbps | 59 Mbps | 113 ms | 97.4% | 基础加密/不留存 | 3台 | ¥19/月 | 8.3 / 10 | 2026-11-07 |
 | 6 | 灵猫 | 262 Mbps | 78 Mbps | 62 ms | 98.5% | 基础加密/不留存 | 2台 | ¥25/月 | 8.8 / 10 | 2026-11-06 |
 | 7 | 闪跃 FlashLeap | 410 Mbps | 104 Mbps | 77 ms | 97.8% | 基础加密/不留存 | 2台 | ¥24/月 | 8.4 / 10 | 2026-11-04 |
@@ -270,7 +270,7 @@ Ping 通常以 **ms（毫秒）**作为单位，用来反映网络请求的响�
 | 微风网络 Breezenet | 548 Mbps | 317 Mbps | 30 ms | 454 Mbps | 199 Mbps | 67 ms | 352 Mbps | 225 Mbps | 66 ms |
 | 飞猫 | 723 Mbps | 339 Mbps | 19 ms | 549 Mbps | 208 Mbps | 34 ms | 775 Mbps | 302 Mbps | 50 ms |
 | 暮光网络 | 733 Mbps | 263 Mbps | 33 ms | 626 Mbps | 262 Mbps | 58 ms | 351 Mbps | 119 Mbps | 67 ms |
-| 隐形人 | 444 Mbps | 226 Mbps | 27 ms | 616 Mbps | 369 Mbps | 48 ms | 399 Mbps | 191 Mbps | 68 ms |
+| 隐形人 | 865 Mbps | 328 Mbps | 18 ms | 780 Mbps | 310 Mbps | 45 ms | 810 Mbps | 295 Mbps | 36 ms |
 | 无忧 | 662 Mbps | 417 Mbps | 35 ms | 544 Mbps | 277 Mbps | 51 ms | 645 Mbps | 406 Mbps | 67 ms |
 | 灵猫 | 444 Mbps | 168 Mbps | 40 ms | 337 Mbps | 121 Mbps | 59 ms | 391 Mbps | 265 Mbps | 76 ms |
 | 闪跃 FlashLeap | 930 Mbps | 548 Mbps | 22 ms | 564 Mbps | 231 Mbps | 36 ms | 797 Mbps | 526 Mbps | 50 ms |

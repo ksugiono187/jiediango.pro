@@ -27,6 +27,6 @@ export const homeCompareData: Record<string, string[]> = {
   wuyou: ['¥19/月', '稳定', '97.4%'],
   xingdaomeng: ['¥25/月', '稳定', '99.9%'],
   yifan: ['¥20/月', '稳定', '98.5%'],
-  yinxingren: ['¥24/月', '优秀', '98.8%'],
+  yinxingren: ['¥24/月起', '极佳', '99.9%'],
   yuzhou: ['¥25/月', '极佳', '97.4%'],
 };
