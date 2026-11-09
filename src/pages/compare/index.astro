@@ -8,12 +8,12 @@ import { compareData, compareDimensions } from '../../data/compareData';
 
 const allBrands = await getCollection('brands');
 const sortOrder = [
-  'wuyou', 'shanyue', 'feimao', 'feiwei', 'quanqiu', 
-  'ermao', 'breezenet', 'guangsu', 'weitu', 'yifan', 
-  'xingdaomeng', 'yuzhou', 'u1s1', 'muguang', 'lingmao', 
-  'kuajie', 'jilian', 'guangnian', 'sogo', 'bianyuan', 
+  'breezenet', 'feimao', 'muguang', 'yinxingren', 'wuyou', 'lingmao', 
+  'shanyue', 'feiwei', 'kuajie', 'xingdaomeng', 'guangsu', 
+  'weitu', 'u1s1', 'jilian', 'quanqiu', 'guangnian', 
+  'sogo', 'yuzhou', 'ermao', 'yifan', 'bianyuan', 
   'kexin', 'sujie', 'kuaili', 'feiv', 'tizi', 
-  'langwang', 'lingdong', 'yinxingren'
+  'langwang', 'lingdong'
 ];
 
 const brands = allBrands.sort((a, b) => {

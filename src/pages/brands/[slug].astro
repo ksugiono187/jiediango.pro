@@ -6,12 +6,12 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 export async function getStaticPaths() {
   const brands = await getCollection('brands');
   const sortOrder = [
-    'breezenet', 'feimao', 'muguang', 'wuyou', 'lingmao', 
+    'breezenet', 'feimao', 'muguang', 'yinxingren', 'wuyou', 'lingmao', 
     'shanyue', 'feiwei', 'kuajie', 'xingdaomeng', 'guangsu', 
     'weitu', 'u1s1', 'jilian', 'quanqiu', 'guangnian', 
     'sogo', 'yuzhou', 'ermao', 'yifan', 'bianyuan', 
     'kexin', 'sujie', 'kuaili', 'feiv', 'tizi', 
-    'langwang', 'lingdong', 'yinxingren'
+    'langwang', 'lingdong'
   ];
   
   const sortedBrands = [...brands].sort((a, b) => {

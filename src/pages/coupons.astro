@@ -5,12 +5,12 @@ import { couponData } from '../data/coupons';
 
 const allBrands = await getCollection('brands');
 const sortOrder = [
-  'breezenet', 'feimao', 'muguang', 'wuyou', 'lingmao', 
+  'breezenet', 'feimao', 'muguang', 'yinxingren', 'wuyou', 'lingmao', 
   'shanyue', 'feiwei', 'kuajie', 'xingdaomeng', 'guangsu', 
   'weitu', 'u1s1', 'jilian', 'quanqiu', 'guangnian', 
   'sogo', 'yuzhou', 'ermao', 'yifan', 'bianyuan', 
   'kexin', 'sujie', 'kuaili', 'feiv', 'tizi', 
-  'langwang', 'lingdong', 'yinxingren'
+  'langwang', 'lingdong'
 ];
 const brands = allBrands.sort((a, b) => {
   const indexA = sortOrder.indexOf(a.id);

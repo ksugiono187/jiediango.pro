@@ -1,12 +1,12 @@
 ---
 name: "隐形人"
 price: "¥24/月"
-rating: "9.0"
+rating: "9.2"
 description: "深度万字评测：隐形人。涵盖速度实测、流媒体解锁、路由优化及真实用户反馈，提供隐形人最详尽的选购指南。"
 category: "service"
 tags: ["极致隐蔽", "最强抗封", "敏感时期必备", "坚如磐石"]
 featured: true
-updatedDate: 2026-11-08T00:00:00Z
+updatedDate: 2026-11-09T00:00:00Z
 url: "https://varnexa.invisibleaff.com/#/?code=JF4seZUy"
 ---
 
