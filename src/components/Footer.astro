@@ -1,5 +1,5 @@
 ---
-import { footerNav } from '../data/nav';
+import { footerNav, friendLinks } from '../data/nav';
 import { site } from '../data/site';
 const currentYear = new Date().getFullYear();
 ---
@@ -38,7 +38,28 @@ const currentYear = new Date().getFullYear();
         </ul>
       </div>
     </div>
-    <div class="mt-12 border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+
+    <!-- 友情链接区域 -->
+    {friendLinks && friendLinks.length > 0 && (
+      <div class="mt-10 pt-6 border-t border-slate-800/80">
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">友情链接：</span>
+          {friendLinks.map(link => (
+            <a 
+              href={link.href} 
+              target="_blank" 
+              rel="noopener" 
+              class="text-sm text-slate-400 hover:text-primary-400 transition-colors"
+              title={link.title}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="mt-8 border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
       <p class="text-sm text-slate-400">
         &copy; {currentYear} {site.name}. All rights reserved.
       </p>

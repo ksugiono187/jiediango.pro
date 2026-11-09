@@ -25,3 +25,8 @@ export const footerNav = {
     { name: '免责声明', href: '/disclaimer/' }
   ]
 };
+
+export const friendLinks = [
+  { name: '叮当观察', href: 'https://jcvpn.blog/', title: '机场推荐与VPN推荐｜叮当观察' },
+  { name: '机场推荐网', href: 'https://jichang-tuijian.org/', title: '2026机场推荐与选择指南' }
+];
