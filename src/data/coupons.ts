@@ -5,7 +5,7 @@ export const couponData: Record<string, { label: string; code: string }> = {
   feiwei: { label: '八折优惠券', code: 'firefly' },
   quanqiu: { label: '八折优惠券', code: 'tt88' },
   ermao: { label: '八五折优惠券', code: 'ermao888' },
-  yinxingren: { label: '八折优惠码', code: 'JF4seZUy' },
+  yinxingren: { label: '八折优惠码', code: 'yxr888' },
   breezenet: { label: '七折优惠券', code: 'weifeng90' },
   guangsu: { label: '九折优惠券', code: 'jichangcha09' },
   weitu: { label: '九折优惠券', code: 'rabbit' },
