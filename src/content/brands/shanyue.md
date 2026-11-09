@@ -6,7 +6,7 @@ description: "深度万字评测：闪跃 FlashLeap。涵盖速度实测、流�
 category: "service"
 tags: ["高强度抗封", "IEPL直通", "外贸专属", "低延迟"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://vip02.flashleapaff.com/#/?code=FkCGEeaC"
 ---
 

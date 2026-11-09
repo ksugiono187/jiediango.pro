@@ -6,7 +6,7 @@ description: "深度万字评测：Sogo云。涵盖速度实测、流媒体解�
 category: "service"
 tags: ["稳定不掉线", "超大带宽", "适合下载", "客服秒回"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://wzjc.sogoyunaff.cc/#/?code=2x2EywO9"
 ---
 

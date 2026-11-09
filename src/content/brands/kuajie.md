@@ -6,7 +6,7 @@ description: "深度万字评测：跨界。涵盖速度实测、流媒体解锁
 category: "service"
 tags: ["性价比之选", "游戏友好", "多地区覆盖", "平稳落地"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://vip02.kuajieaff.com/#/?code=VfWeYwHM"
 ---
 

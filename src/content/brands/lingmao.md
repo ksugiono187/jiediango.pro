@@ -6,7 +6,7 @@ description: "深度万字评测：灵猫。涵盖速度实测、流媒体解锁
 category: "service"
 tags: ["企业级", "不限速", "稳定原生", "全能型"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://vip02.civetaff.com/#/?code=kZlRw46w"
 ---
 

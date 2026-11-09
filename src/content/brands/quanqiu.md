@@ -6,7 +6,7 @@ description: "深度万字评测：全球云。涵盖速度实测、流媒体解
 category: "service"
 tags: ["全球覆盖", "CN2加持", "丝滑体验", "出差必备"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://sswdh.gcvipaff.com/#/?code=NE1AcNIX"
 ---
 

@@ -6,7 +6,7 @@ description: "深度万字评测：速界 SuJie。涵盖速度实测、流媒体
 category: "service"
 tags: ["平价体验", "学生党推荐", "够用就行", "佛系冲浪"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://work.speedworldaff.cc/#/?code=wSjLCpIf"
 ---
 

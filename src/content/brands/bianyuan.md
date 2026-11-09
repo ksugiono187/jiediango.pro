@@ -6,7 +6,7 @@ description: "深度万字评测：边缘节点。涵盖速度实测、流媒体
 category: "service"
 tags: ["小众稳定", "不扎堆", "海外党必备", "高速体验"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://work.edgenovaaff.cc/#/?code=z81zCfw1"
 ---
 

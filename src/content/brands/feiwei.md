@@ -6,7 +6,7 @@ description: "深度万字评测：Firefly机场。涵盖速度实测、流媒�
 category: "service"
 tags: ["高速直连", "大带宽", "极简体验", "无套路"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://vip02.fireflyaff.com/#/?code=Fes6j9rn"
 ---
 

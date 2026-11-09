@@ -6,7 +6,7 @@ description: "深度万字评测：可信云。涵盖速度实测、流媒体解
 category: "service"
 tags: ["轻量体验", "超低月付", "日常备用", "安全放心"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://work.kosingaff.com/#/?code=BNsA58Es"
 ---
 

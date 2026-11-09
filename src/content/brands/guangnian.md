@@ -6,7 +6,7 @@ description: "深度万字评测：光年梯。涵盖速度实测、流媒体解
 category: "service"
 tags: ["快速穿透", "简单易用", "便宜大碗", "流媒体特化"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://ggmq.gntaff.com/#/?code=RAJFvngV"
 ---
 

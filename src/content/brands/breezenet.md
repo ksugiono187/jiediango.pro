@@ -6,7 +6,7 @@ description: "深度万字评测：微风网络 Breezenet。涵盖速度实测�
 category: "service"
 tags: ["超高性价比", "大流量", "新手首选", "BGP中转"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://edp01.breezenetaff.com/#/?code=4KDOroY0"
 ---
 

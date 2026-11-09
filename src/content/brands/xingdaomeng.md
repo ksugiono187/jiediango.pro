@@ -6,7 +6,7 @@ description: "深度万字评测：星岛梦。涵盖速度实测、流媒体解
 category: "service"
 tags: ["新晋黑马", "节点丰富", "视频秒开", "全平台支持"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://kfccbb.xingdaomeng.com/#/?code=JTRIWFim"
 ---
 

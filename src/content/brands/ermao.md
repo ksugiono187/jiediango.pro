@@ -6,7 +6,7 @@ description: "深度万字评测：二猫云。涵盖速度实测、流媒体解
 category: "service"
 tags: ["备用首选", "价格亲民", "多协议支持", "新手友好"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://waaa.2maoyunaff.cc/#/?code=uHeyKG44"
 ---
 

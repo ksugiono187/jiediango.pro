@@ -6,7 +6,7 @@ description: "深度万字评测：光速云。涵盖速度实测、流媒体解
 category: "service"
 tags: ["极速专线", "大厂背书", "极低延迟", "电竞级"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://mdlky.gsyaff.com/#/?code=6tRWbtgK"
 ---
 

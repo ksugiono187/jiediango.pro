@@ -6,7 +6,7 @@ description: "深度万字评测：飞猫。涵盖速度实测、流媒体解锁
 category: "service"
 tags: ["极致低价", "IEPL专线", "轻度使用", "流媒体解锁"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://flycat1.flycatvipaff.cc/#/?code=Os3T3OxW"
 ---
 

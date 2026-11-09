@@ -6,7 +6,7 @@ description: "深度万字评测：飞V。涵盖速度实测、流媒体解锁�
 category: "service"
 tags: ["高端老牌", "从不跑路", "全节点专线", "极致奢华"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://varnexa.flyvaff.com/#/?code=UoU2Izm5"
 ---
 

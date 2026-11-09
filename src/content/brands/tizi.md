@@ -6,7 +6,7 @@ description: "深度万字评测：梯子云 LadderCloud。涵盖速度实测、
 category: "service"
 tags: ["傻瓜式操作", "一键连接", "多设备共享", "无门槛"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://varnexa.ladderaff.com/#/?code=kuE4kqxo"
 ---
 

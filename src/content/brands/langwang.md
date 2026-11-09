@@ -6,7 +6,7 @@ description: "深度万字评测：浪网 WaveNet。涵盖速度实测、流媒�
 category: "service"
 tags: ["高端专属", "尊享体验", "企业首选", "无缝漫游"]
 featured: true
-updatedDate: 2026-09-14T00:00:00Z
+updatedDate: 2026-11-08T00:00:00Z
 url: "https://varnexa.wavenetaff.com/#/?code=oU77JXen"
 ---
 
